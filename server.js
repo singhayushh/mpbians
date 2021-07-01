@@ -35,7 +35,7 @@ app.use('/user', userRoutes);
 app.use('/profile', profileRoutes);
 
 app.get('*', (_req, res) => {
-    res.render('404', { pageTitle: `MPB Connect | 404` } );
+    res.render('404');
 });
 
 app.listen(port, () => console.log(`Website running at ${baseurl}:${port}`));
