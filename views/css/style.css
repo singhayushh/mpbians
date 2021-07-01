@@ -12,14 +12,14 @@
     --heading-size: 3rem;
     --logo-size: 2rem;
     --subheading-size: 1.5rem;
-    --font-size: 1.1rem;
+    --font-size: 1rem;
     --padding-vertical: 3.5rem;
     --padding-horizontal: 2.5rem;
     --margin: 1rem;
     --bg-primary: #FFFFFF;
-    --bg-secondary: #FAFBFC;
-    --text-primary: #000000;
-    --text-secondary: #414141;
+    --bg-secondary: #FFFCF7;
+    --text-primary: #070707;
+    --text-secondary: #3d3d3d;
     --brand-color: #F4A641;
     --red: rgb(219, 50, 54);
     --yellow: rgb(244, 194, 13);
@@ -29,7 +29,7 @@
     --yellow-bg: rgba(244, 194, 13, 0.2);
     --blue-bg: rgba(72, 133, 237, 0.2);
     --green-bg: rgba(60, 186, 84, 0.2);
-    --shadow-raised: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+    --shadow-raised: 2px 4px 12px rgb(211, 211, 211);
     --shadow-flat: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
@@ -50,7 +50,7 @@ html {
 }
 
 body {
-    font-family: "Roboto", "Noto Sans", sans-serif;
+    font-family: "Manrope", "Noto Sans", sans-serif;
     font-size: var(--font-size);
     font-weight: 400;
     line-height: 1.55;
@@ -68,6 +68,7 @@ h1, h2, h3 {
 }
 
 h1 {
+    text-align: center;
     font-size: var(--heading-size);
 }
 
@@ -89,6 +90,7 @@ a,
 a:visited,
 a:hover,
 a:active {
+    transition: all 0.4s ease-in-out;
     color: inherit;
     text-decoration: none;
 }
@@ -97,11 +99,21 @@ a:hover {
     color: var(--brand-color);
 }
 
-section {
+ul li {
+    list-style: none;
+}
+
+ol li {
+    margin-left: var(--margin);
+}
+
+section, main {
     width: 100%;
 }
 
 .container {
+    max-width: 1200px;
+    margin: auto;
     width: 100%;
     padding: var(--padding-vertical) var(--padding-horizontal);
 }
@@ -120,7 +132,7 @@ section {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .raised {
@@ -131,32 +143,45 @@ section {
     box-shadow: var(--shadow-flat);
 }
 
-.icon {
-    height: 3rem;
-    width: 3rem;
+.icon, .logo {
+    height: 3.5rem;
+    width: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
+    margin-right: var(--margin);
 }
 
 .red {
     color: var(--red);
+}
+
+.red-bg {
     background-color: var(--red-bg);
 }
 
 .blue {
     color: var(--blue);
+}
+
+.blue-bg {
     background-color: var(--blue-bg);
 }
 
 .yellow {
     color: var(--yellow);
+}
+
+.yellow-bg {
     background-color: var(--yellow-bg);
 }
 
 .green {
     color: var(--green);
+}
+
+.green-bg {
     background-color: var(--green-bg);
 }
 
@@ -168,13 +193,20 @@ section {
     border-radius: 220px;
     width: 100%;
     color: var(--text-primary);
-    background-color: var(--bg-primary);
-    box-shadow: var(--shadow-raised);
+    padding: 0.5rem 2rem;
+    float: left;
+    transition: all 0.3s;
 }
 
 .cta {
+    font-weight: 600;
     background-color: var(--brand-color);
     color: #FFFFFF;
+}
+
+.cta:hover {
+    color: #FFFFFF;
+    box-shadow: var(--shadow-raised);
 }
 
 .form-item {
@@ -206,4 +238,74 @@ input, select, textarea {
     width: 100%;
     resize: none;
     padding: var(--margin);
+}
+
+/* Actual CSS Begins here */
+
+header {
+    height: 6rem;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    box-shadow: var(--shadow-raised);
+    bottom: 0;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    display: flex;
+    align-items: flex-end;
+    background-color: var(--bg-secondary);
+}
+
+header .container {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0rem var(--margin);
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.hero {
+    align-items: center;
+}
+
+header img {
+    height: 100%;
+}
+
+.logo, .account-icon, nav span {
+    display: none;
+}
+
+.account-icon {
+    box-shadow: var(--shadow-raised);
+}
+
+nav, nav ul {
+    width: 100%;
+}
+
+.active {
+    color: var(--brand-color);
+}
+
+ion-icon {
+    font-size: 1.5rem;
+    --ionicon-stroke-width: 36px;
+}
+
+/* Sections */
+main {
+    background-color: var(--bg-secondary);
+    min-height: 500px;
+}
+
+#landing .btn {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#landing img {
+    width: 100%;
 }

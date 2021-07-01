@@ -1,7 +1,16 @@
+
 @media screen and (min-device-width: 1280px), screen and (min-width: 1280px) {
 }
 
 @media screen and (min-device-width: 890px), screen and (min-width: 890px) {
+
+  main {
+    margin-top: 6rem;
+  }
+
+  .btn {
+    width: max-content;
+  }
 
   .flex-column {
     flex-direction: column;
@@ -49,6 +58,30 @@
     flex: 0 0 69%;
     max-width: 69%;
   }
+
+  header {
+    top: 0;
+    box-shadow: none;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+  }
+
+  nav .icon {
+    display: none;
+  }
+
+  nav li {
+    margin: 0rem var(--margin);
+  }
+
+  .logo, .account-icon, nav span {
+    display: flex;
+  }
+
+  nav, nav ul {
+    width: max-content !important;
+  }
+
 }
 
 @media screen and (min-device-width: 768px), screen and (min-width: 768px) {
