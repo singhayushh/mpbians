@@ -12,16 +12,33 @@ const Create = async (name, school_id, pid) => {
     return;
 };
 
-const Login = async () => {
-    const user = await User.findOne({ school_id });
+const Login = async (school_id, password) => {
+    const user = await User.findOne({ school_id, registered: true });
     if (!user) {
-        return { 'err': 'Incorrect uid or password', 'user': null }
+        return { 'err': 'Incorrect User ID or Password', 'user': null }
     }
 
     if (await bcrypt.compare(password, user.password)) {
         return { 'err': null, 'user': user };
     } else {
-        return { 'err': 'Incorrect uid or password', 'user': null }
+        return { 'err': 'Incorrect User ID or Password', 'user': null }
+    }
+};
+
+const Verify = async (school_id, name) => {
+    // Capitalize case
+    name = name.replace(/\w\S*/g, (txt) => {
+        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+
+    const user = await User.findOne({ school_id, name });
+    if (user) {
+        if (user.registered) {
+            return "This account has already been registered to the platform";
+        } 
+        return "success";
+    } else {
+        return "Invalid User ID or Name";
     }
 };
 
@@ -86,5 +103,5 @@ const FetchByYear = async (year) => {
 };
 
 module.exports = {
-    Create, Login, Register, EditToken, SetPassword, FetchByToken, FetchByUsername, FetchByYear
+    Create, Login, Verify, Register, EditToken, SetPassword, FetchByToken, FetchByUsername, FetchByYear
 };

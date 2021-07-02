@@ -5,7 +5,7 @@ const auth = (passer) => {
         try {
             const decoded = jwt.verify(req.cookies['auth_token'], process.env.JWT_SECRET);
             req.body.user = decoded;
-            if (passer == 'block')
+            if (decoded && passer == 'block')
                 res.redirect('/');            
             else if (passer == 'admin') {
                 if (decoded.role != 'Admin')
@@ -15,6 +15,7 @@ const auth = (passer) => {
             } else
                 next();                 
         } catch (error) {
+            console.log(error);
             res.redirect('/login?status=unauthorized');
         }
     };

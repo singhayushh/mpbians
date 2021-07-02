@@ -56,7 +56,7 @@ const Login = async (req, res) => {
             });
             res.redirect(`/${school_id}`);
         } else {
-            res.redirect(`/register?err=${err}`);
+            res.redirect(`/login?message=${err}`);
         }
     } catch (err) {
         res.render('500', err);
@@ -77,6 +77,20 @@ const Register = async (req, res) => {
             res.render('edit', { user });
         } else {
             res.redirect(`/register?err=${err}`);
+        }
+    } catch (err) {
+        res.render('500', err);
+    }
+};
+
+const Verify = async (req, res) => {
+    try {
+        const { school_id, name } = req.body;
+        const message = await u.Verify(school_id, name);
+        if (message != "success") {
+            res.redirect(`/register?message=${message}`)
+        } else {
+            res.render('change', { action: "Create a password"});
         }
     } catch (err) {
         res.render('500', err);
@@ -120,6 +134,7 @@ module.exports = {
     ForgotPassword,
     ChangePassword,
     ResetPassword,
+    Verify,
     Login,
     Register,
     CreateOne,

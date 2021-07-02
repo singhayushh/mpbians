@@ -47,6 +47,7 @@ html {
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: transparent;
+    background-color: var(--bg-secondary);
 }
 
 body {
@@ -153,6 +154,11 @@ section, main {
     margin-right: var(--margin);
 }
 
+.warning {
+    font-weight: 700;
+    color: var(--red);
+}
+
 .red {
     color: var(--red);
 }
@@ -190,10 +196,10 @@ section, main {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 220px;
+    border-radius: 8px;
     width: 100%;
     color: var(--text-primary);
-    padding: 0.5rem 2rem;
+    padding: 10px 16px;
     float: left;
     transition: all 0.3s;
 }
@@ -201,11 +207,11 @@ section, main {
 .cta {
     font-weight: 600;
     background-color: var(--brand-color);
-    color: #FFFFFF;
+    color: #FFFFFF !important;
 }
 
 .cta:hover {
-    color: #FFFFFF;
+    color: #FFFFFF !important;
     box-shadow: var(--shadow-raised);
 }
 
@@ -224,20 +230,69 @@ section, main {
 form {
     width: 100%;
     max-width: 890px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 form ::placeholder {
+    font-family: inherit;
     color: inherit;
     opacity: 1;
 }
 
-input, select, textarea {
+label {
+    display: block;
+    margin-bottom: .2rem;
+    font-weight: 700;
+}
+
+.visual img {
+    width: 100%;
+}
+
+.stretch {
+    align-items: stretch;
+}
+
+input, select, textarea, button {
+    font-size: var(--font-size);
+    font-family: inherit;
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
     width: 100%;
     resize: none;
-    padding: var(--margin);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-weight: 400;
+    line-height: 24px;
+    height: 40px;
+    padding: 10px 16px;
+    outline: none;
+    border-radius: 8px;
+    background-color: #f2f2f2;
+    -webkit-transition: background-color 0.4s ease, outline 0.4s ease, color 0.4s ease, -webkit-box-shadow 0.4s ease;
+    transition: background-color 0.4s ease, outline 0.4s ease, color 0.4s ease, box-shadow 0.4s ease, -webkit-box-shadow 0.4s ease;
+}
+
+input:hover, select:hover, textarea:hover {
+    background-color: #fff;
+    border-color: rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 0 0 4px var(--yellow-bg);
+    box-shadow: 0 0 0 4px var(--yellow-bg);
+}
+
+input:focus, select:focus, textarea:focus {
+    background-color: #fff;
+    border-color: var(--brand-color);
+    -webkit-box-shadow: 0 0 0 4px var(--yellow-bg);
+    box-shadow: 0 0 0 4px var(--yellow-bg);
+}
+
+button[type=submit] {
+    margin-top: var(--margin);
+    width: 100%;
+    max-width: 200px;
 }
 
 /* Actual CSS Begins here */
@@ -253,7 +308,7 @@ header {
     border-top-right-radius: 25px;
     display: flex;
     align-items: flex-end;
-    background-color: var(--bg-secondary);
+    /* background-color: var(--bg-secondary); */
 }
 
 header .container {
@@ -308,4 +363,18 @@ main {
 
 #landing img {
     width: 100%;
+}
+
+#auth .row {
+    align-items: center;
+    justify-content: center;
+}
+
+#auth form {
+    height: 100%;
+    justify-content: flex-start;
+}
+
+.form-title {
+    margin-bottom: var(--padding-vertical);
 }

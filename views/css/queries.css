@@ -82,6 +82,10 @@
     width: max-content !important;
   }
 
+  .visual img {
+    width: 90%;
+  }
+
 }
 
 @media screen and (min-device-width: 768px), screen and (min-width: 768px) {

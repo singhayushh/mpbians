@@ -1,8 +1,38 @@
 <%- include('components/header.ejs') %>
 
-<main>
-    <div class="container">
-    </div>
-</main>
+    <main id="auth">
+        <div class="container">
+            <div class="flex-row stretch">
+                <div class="row span-1-of-2 visual flex-wrap">
+                    <img src="/img/login.svg" alt="">
+                </div>
+                <div class="row span-1-of-2 flex-wrap">
+                    <form action="/user/register" method="POST">
+                        <div class="form-title">
+                            <h2>Sign up to MPB Connect</h2>
+                        </div>
+                        <% if (message) { %>
+                        <div class="warning">*<%= message %></div>
+                        <% } %>
+                        <div class="form-item">
+                            <label for="uid">
+                                Name
+                            </label>
+                            <input type="text" name="name" id="name" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="school_id">
+                                User ID
+                            </label>
+                            <input type="text" name="school_id" id="school_id" required>
+                        </div>
+                        <div class="form-item">
+                            <button type="submit" class="btn cta">Sign up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
 
-<%- include('components/footer.ejs') %>
+    <%- include('components/footer.ejs') %>

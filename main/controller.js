@@ -4,12 +4,14 @@ const Home = (_req, res) => {
     res.render('home');
 };
 
-const Login = (_req, res) => {
-    res.render('login');
+const Login = (req, res) => {
+    const message = req.query.message;
+    res.render('login', { message });
 };
 
-const Register = (_req, res) => {
-    res.render('register');
+const Register = (req, res) => {
+    const message = req.query.message;
+    res.render('register', { message });
 };
 
 const User = async (req, res) => {
