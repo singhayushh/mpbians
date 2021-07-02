@@ -1,17 +1,17 @@
-const Profile = require('./model');
+const Profile = require("./model");
 
 const Create = async (school_id, year) => {
     const newProfile = new Profile({ school_id, year });
     try {
         const profile = await newProfile.save();
-        return { 'err': null, 'pid': profile._id };
+        return { err: null, pid: profile._id };
     } catch (err) {
-        return { 'err': err.message, 'pid': null };
+        return { err: err.message, pid: null };
     }
 };
 
 const Edit = async (school_id, data) => {
-    try {   
+    try {
         const profile = await Profile.findOne({ school_id });
         profile.email = data.email;
         profile.phone = data.phone;
@@ -29,5 +29,6 @@ const Edit = async (school_id, data) => {
 };
 
 module.exports = {
-    Create, Edit
+    Create,
+    Edit,
 };

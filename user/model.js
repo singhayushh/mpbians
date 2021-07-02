@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose');
-const { hash } = require('bcrypt');
+const { Schema, model } = require("mongoose");
+const { hash } = require("bcrypt");
 
 const user = new Schema(
     {
@@ -22,30 +22,29 @@ const user = new Schema(
         },
         role: {
             type: String,
-            default: 'Student',
+            default: "Student",
         },
         profile: {
             type: Schema.Types.ObjectId,
-            ref: 'Profile'
+            ref: "Profile",
         },
         token: {
             type: String,
-            default: null
-        }
-    }, 
+            default: null,
+        },
+    },
     {
         timestamps: true,
     }
 );
 
-user.pre('save', async function (next) {
+user.pre("save", async function (next) {
     if (!this.isModified || !this.isNew) {
         next();
-    } else this.isModified('password');
-    if (this.password)
-        this.password = await hash(String(this.password), 12);
-    next(); 
+    } else this.isModified("password");
+    if (this.password) this.password = await hash(String(this.password), 12);
+    next();
 });
 
-let User = model('User', user);
+let User = model("User", user);
 module.exports = User;

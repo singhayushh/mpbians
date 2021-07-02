@@ -1,12 +1,12 @@
-const p = require('./service');
+const p = require("./service");
 
 const Profile = async (req, res) => {
     try {
         const school_id = req.body.user.school_id;
         const profile = await p.FetchProfile(school_id);
-        res.render('user', { profile });
+        res.render("user", { profile });
     } catch (err) {
-        res.render('500', { err });
+        res.render("500", { err });
     }
 };
 
@@ -14,9 +14,9 @@ const RenderEdit = async (req, res) => {
     try {
         const school_id = req.body.user.school_id;
         const profile = await p.FetchProfile(school_id);
-        res.render('edit', { profile });
+        res.render("edit", { profile });
     } catch (err) {
-        res.render('500', { err });
+        res.render("500", { err });
     }
 };
 
@@ -35,15 +35,17 @@ const Edit = async (req, res) => {
         };
         const err = await p.Edit(school_id, data);
         if (!err) {
-            res.redirect('/profile');
+            res.redirect("/profile");
         } else {
             res.redirect(`/profile/edit?err=${err}`);
         }
     } catch (err) {
-        res.render('500', { err });
+        res.render("500", { err });
     }
 };
 
 module.exports = {
-    Profile, Edit, RenderEdit
+    Profile,
+    Edit,
+    RenderEdit,
 };
