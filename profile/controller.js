@@ -6,7 +6,7 @@ const Profile = async (req, res) => {
         const profile = await p.FetchProfile(school_id);
         res.render('user', { profile });
     } catch (err) {
-        res.render('500', err);
+        res.render('500', { err });
     }
 };
 
@@ -16,7 +16,7 @@ const RenderEdit = async (req, res) => {
         const profile = await p.FetchProfile(school_id);
         res.render('edit', { profile });
     } catch (err) {
-        res.render('500', err);
+        res.render('500', { err });
     }
 };
 
@@ -40,7 +40,7 @@ const Edit = async (req, res) => {
             res.redirect(`/profile/edit?err=${err}`);
         }
     } catch (err) {
-        res.render('500', err);
+        res.render('500', { err });
     }
 };
 

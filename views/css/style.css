@@ -308,7 +308,7 @@ header {
     border-top-right-radius: 25px;
     display: flex;
     align-items: flex-end;
-    /* background-color: var(--bg-secondary); */
+    background-color: var(--bg-secondary);
 }
 
 header .container {

@@ -2,3 +2,4 @@ node_modules/
 design/
 todo.md
 .env
+views/

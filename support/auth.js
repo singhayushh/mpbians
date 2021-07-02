@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const auth = (passer) => {
     return async (req, res, next) => {
         try {
-            const decoded = jwt.verify(req.cookies['auth_token'], process.env.JWT_SECRET);
+            const decoded = jwt.verify(req.cookies['auth_token'], process.env.jwt_secret);
             req.body.user = decoded;
             if (decoded && passer == 'block')
                 res.redirect('/');            

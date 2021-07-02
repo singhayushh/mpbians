@@ -27,7 +27,7 @@ const ChangePassword = async (req, res) => {
             res.redirect('/?message=success');
         }
     } catch (err) {
-        res.render('500', err);
+        res.render('500', { err });
     }
 };
 
@@ -39,7 +39,7 @@ const ResetPassword = async (req, res) => {
             res.redirect('/?message=success');
         }
     } catch (err) {
-        res.render('500', err);
+        res.render('500', { err });
     }
 };
 
@@ -47,8 +47,9 @@ const Login = async (req, res) => {
     try {
         const { school_id, password } = req.body;
         const { err, user } = await u.Login(school_id, password);
+        console.log(user);
         if (!err) {        
-            const token = jwt.sign(user, process.env.JWT_SECRET);
+            const token = jwt.sign({ user }, process.env.jwt_secret);
             res.cookie(process.env.COOKIE_NAME, token, {
                 maxAge: 10 * 24 * 60 * 60 * 1000,
                 httpOnly: true,
@@ -59,16 +60,16 @@ const Login = async (req, res) => {
             res.redirect(`/login?message=${err}`);
         }
     } catch (err) {
-        res.render('500', err);
+        res.render('500', { err });
     }
 };
 
 const Register = async (req, res) => {
     try {
-        const { school_id, password } = req.body;
-        const { err, user } = await u.Register(school_id, password);
+        const { id, password } = req.body;
+        const { err, user } = await u.Register(id, password);
         if (!err) {        
-            const token = jwt.sign(user, process.env.JWT_SECRET);
+            const token = jwt.sign({ user }, process.env.jwt_secret);
             res.cookie(process.env.COOKIE_NAME, token, {
                 maxAge: 10 * 24 * 60 * 60 * 1000,
                 httpOnly: true,
@@ -76,24 +77,24 @@ const Register = async (req, res) => {
             });
             res.render('edit', { user });
         } else {
-            res.redirect(`/register?err=${err}`);
+            res.redirect(`/register?message=${err}`);
         }
     } catch (err) {
-        res.render('500', err);
+        res.render('500', { err });
     }
 };
 
 const Verify = async (req, res) => {
     try {
         const { school_id, name } = req.body;
-        const message = await u.Verify(school_id, name);
-        if (message != "success") {
-            res.redirect(`/register?message=${message}`)
+        const { err, id } = await u.Verify(school_id, name);
+        if (err) {
+            res.redirect(`/register?message=${err}`)
         } else {
-            res.render('change', { action: "Create a password"});
+            res.render('change', { 'action': "Create a password", 'message': null, 'id': id, 'endpoint': '/user/register' });
         }
     } catch (err) {
-        res.render('500', err);
+        res.render('500', { err });
     }
 };
 
@@ -102,13 +103,13 @@ const CreateOne = async (req, res) => {
         const { name, year, school_id } = req.body;
         const { err, pid } = await p.Create(school_id, year);
         if (err) {
-            res.render('500', err);
+            res.render('500', { err });
         } else {
             await u.Create(name, school_id, pid);
             res.redirect(`/batch/${year}`);
         }
     } catch (err) {
-        res.render('500', err);
+        res.render('500', { err });
     }
 };
 

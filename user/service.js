@@ -1,4 +1,5 @@
 const User = require('./model');
+const bcrypt = require('bcrypt');
 
 const Create = async (name, school_id, pid) => {
     const newUser = new User({
@@ -26,27 +27,24 @@ const Login = async (school_id, password) => {
 };
 
 const Verify = async (school_id, name) => {
-    // Capitalize case
-    name = name.replace(/\w\S*/g, (txt) => {
-        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
-
     const user = await User.findOne({ school_id, name });
     if (user) {
         if (user.registered) {
-            return "This account has already been registered to the platform";
+            return { 'err': "This account has already been registered to the platform", 'id': null };
         } 
-        return "success";
+        return { 'err': null, id: user._id };
     } else {
-        return "Invalid User ID or Name";
+        return { 'err': "Invalid User ID or Name", 'id': null };
     }
 };
 
-const Register = async (school_id, password) => {
+const Register = async (_id, newPassword) => {
     password = await bcrypt.hash(String(newPassword), 12);
-    const user = await User.findOne({ school_id });
+    const user = await User.findOne({ _id });
     if (user && !user.registered) {
-        user = await User.findOneAndUpdate({ school_id }, { password, registered: true });
+        user.password = password;
+        user.registered = true;
+        await user.save();
         return { 'err': null, 'user': user };
     } else {
         return { 'err': 'Account already registered or does not exist', 'user': null };
