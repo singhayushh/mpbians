@@ -1,0 +1,44 @@
+<%- include('components/header.ejs') %>
+
+    <main id="auth">
+        <div class="container">
+            <div class="flex-row stretch">
+                <div class="row span-1-of-2 visual flex-wrap">
+                    <img src="/img/login.svg" alt="">
+                </div>
+                <div class="row span-1-of-2 flex-wrap">
+                    <form action="/user/create-one" method="POST">
+                        <div class="form-title">
+                            <h2>Add new user</h2>
+                        </div>
+                        <% if (message) { %>
+                            <div class="warning">*<%= message %></div>
+                        <% } %>
+                        <div class="form-item">
+                            <label for="name">
+                                Name
+                            </label>
+                            <input type="text" name="name" id="name" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="Year">
+                                Year
+                            </label>
+                            <input type="text" name="year" id="year" required>
+                        </div>
+                        <div class="form-item">
+                            <label for="school_id">
+                                User ID
+                            </label>
+                            <input type="text" name="school_id" id="school_id" required>
+                        </div>
+                        <div class="form-item">
+                            <button type="submit" class="btn cta">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('components/footer.ejs') %>

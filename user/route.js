@@ -3,8 +3,10 @@ const Router = express();
 const u = require("./controller");
 const auth = require("../support/auth");
 
+Router.get("/add", auth("admin"), u.Create);
+Router.get("/logout", auth("admin"), u.Logout);
 Router.get("/change-password", auth(), u.RenderChange);
-Router.get("/reset-password/:token", auth(), u.RenderReset);
+Router.get("/reset-password/:token", auth("allow"), u.RenderReset);
 
 Router.post("/login", u.Login);
 Router.post("/new", u.Verify);

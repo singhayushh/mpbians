@@ -15,7 +15,7 @@ const ForgotPassword = async (req, res) => {
             res.redirect(`/login?err=${err}`);
         }
     } catch (err) {
-        res.render("500", { err });
+        res.render("500", { err, auth: req.body.role });
     }
 };
 
@@ -27,7 +27,7 @@ const ChangePassword = async (req, res) => {
             res.redirect("/?message=success");
         }
     } catch (err) {
-        res.render("500", { err });
+        res.render("500", { err, auth: req.body.role });
     }
 };
 
@@ -39,7 +39,7 @@ const ResetPassword = async (req, res) => {
             res.redirect("/?message=success");
         }
     } catch (err) {
-        res.render("500", { err });
+        res.render("500", { err, auth: req.body.role });
     }
 };
 
@@ -48,7 +48,6 @@ const Login = async (req, res) => {
         const { school_id, password } = req.body;
         const { err, user } = await u.Login(school_id, password);
         if (!err) {
-            
             const token = jwt.sign({ user }, process.env.jwt_secret);
             res.cookie("auth_token", token, {
                 maxAge: 10 * 24 * 60 * 60 * 1000,
@@ -60,7 +59,7 @@ const Login = async (req, res) => {
             res.redirect(`/login?message=${err}`);
         }
     } catch (err) {
-        res.render("500", { err });
+        res.render("500", { err, auth: req.body.role });
     }
 };
 
@@ -69,18 +68,29 @@ const Register = async (req, res) => {
         const { id, password } = req.body;
         const { err, user } = await u.Register(id, password);
         if (!err) {
-            const token = jwt.sign({ user }, process.env.jwt_secret);
+            const newUser = {
+                _id: user._id,
+                name: user.name,
+                school_id: user.school_id,
+                registered: user.registered,
+                role: user.role,
+            };
+            const token = jwt.sign({ user: newUser }, process.env.jwt_secret);
             res.cookie("auth_token", token, {
                 maxAge: 10 * 24 * 60 * 60 * 1000,
                 httpOnly: true,
                 secure: false,
             });
-            res.render("edit", { "user": user.profile, "message": null });
+            res.render("edit", {
+                user: user.profile,
+                message: null,
+                auth: req.body.role,
+            });
         } else {
             res.redirect(`/register?message=${err}`);
         }
     } catch (err) {
-        res.render("500", { err });
+        res.render("500", { err, auth: req.body.role });
     }
 };
 
@@ -94,13 +104,18 @@ const Verify = async (req, res) => {
             res.render("change", {
                 action: "Create a password",
                 message: null,
-                id: id,
+                id,
                 endpoint: "/user/register",
+                auth: req.body.role,
             });
         }
     } catch (err) {
-        res.render("500", { err });
+        res.render("500", { err, auth: req.body.role });
     }
+};
+
+const Create = async (req, res) => {
+    res.render("add", { auth: req.body.role, message: null });
 };
 
 const CreateOne = async (req, res) => {
@@ -108,30 +123,36 @@ const CreateOne = async (req, res) => {
         const { name, year, school_id } = req.body;
         const { err, pid } = await p.Create(school_id, name, year);
         if (err) {
-            res.render("500", { err });
+            res.render("500", { err, auth: req.body.role });
         } else {
             await u.Create(name, school_id, pid);
             res.redirect(`/batch/${year}`);
         }
     } catch (err) {
-        res.render("500", { err });
+        res.render("500", { err, auth: req.body.role });
     }
 };
 
-const CreateMany = async (req, res) => {};
+const Logout = async (req, res) => {
+    res.cookie("auth_token", null, {
+        maxAge: 0,
+        httpOnly: true,
+        secure: false,
+    });
+};
 
 const RenderChange = (req, res) => {
     const user = req.body.user;
-    res.render("change", { user });
+    res.render("change", { user, auth: req.body.role });
 };
 
 const RenderReset = async (req, res) => {
     const { token } = req.params;
     const user = await u.FetchByToken(token);
     if (!user) {
-        res.render("404");
+        res.render("404", { auth: req.body.role });
     }
-    res.render("reset", { token, name: user.name });
+    res.render("reset", { token, name: user.name, auth: req.body.role });
 };
 
 module.exports = {
@@ -140,7 +161,9 @@ module.exports = {
     ResetPassword,
     Verify,
     Login,
+    Logout,
     Register,
+    Create,
     CreateOne,
     RenderChange,
     RenderReset,

@@ -42,7 +42,7 @@ const Verify = async (school_id, name) => {
 
 const Register = async (_id, newPassword) => {
     let password = await bcrypt.hash(String(newPassword), 12);
-    const user = await User.findOne({ _id }).populate('profile');
+    const user = await User.findOne({ _id }).populate("profile");
     if (user && !user.registered) {
         user.password = password;
         user.registered = true;
