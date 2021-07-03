@@ -1,0 +1,97 @@
+<%- include('components/header.ejs') %>
+
+<main id="profile">
+    <div class="container">
+        <div class="flex-row stretch head">
+            <div class="row span-1-of-4">
+                <div class="img-wrapper">
+                    <img src="<%= user.picture %>" alt="Profile">
+                </div>
+            </div>
+            <div class="row span-3-of-4 flex-column flex-start">
+                <div class="profile-header w-100">
+                    <div class="w-100 flex-row">
+                        <h2><%= user.name %></h2>
+                        <% if (auth) { %> 
+                            <a href="/profile/edit" class="btn cta">Edit Profile</a>
+                        <% } %>
+                    </div>
+                    <span><%= user.designation %>, <%= user.organization %></span>
+                </div>
+                <div class="profile-footer">
+                    <div class="icon-set">
+                        <ion-icon name="location-outline"></ion-icon>
+                        <span><%= user.location %></span>
+                    </div>
+                    <div class="icon-set">
+                        <ion-icon name="golf-outline"></ion-icon>
+                        <span><%= user.field %></span>
+                    </div>
+                    <br>
+                    <div class="icon-set">
+                        <ion-icon name="call-outline"></ion-icon>
+                        <span><%= user.phone %></span>
+                    </div>
+                    <div class="icon-set">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <span><%= user.email %></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<section>
+    <div class="container">
+        <div class="flex-row">
+            <div class="row span-1-of-3">
+                <h3>On the web</h3>
+                <p>
+                    <div class="icon-set">
+                        <ion-icon name="logo-instagram"></ion-icon>
+                        <span><%= user.instagram %></span>
+                    </div>
+                    <div class="icon-set">
+                        <ion-icon name="logo-facebook"></ion-icon>
+                        <span><%= user.facebook %></span>
+                    </div>
+                    <div class="icon-set">
+                        <ion-icon name="logo-twitter"></ion-icon>
+                        <span><%= user.twitter %></span>
+                    </div>
+                    <div class="icon-set">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                        <span><%= user.linkedin %></span>
+                    </div>
+                </p>
+                <h3>School</h3>
+                <p>
+                    <label for="year">Batch of</label>
+                    <span><%= user.year %></span>
+                    <label for="stream" style="margin-top: 1rem;">Stream</label>
+                    <span>Commerce</span>
+                </p>
+            </div>
+            <div class="row span-2-of-3">
+                <h3>About</h3>
+                <p id="about-html">
+                    <%= user.about %>
+                </p>
+                <h3>Portfolio</h3>
+                <p>
+                    <div class="icon-set">
+                        <ion-icon name="earth-outline"></ion-icon>
+                        <span><%= user.website %></span>
+                    </div>
+                    <div class="icon-set">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                        <span><%= user.linkedin %></span>
+                    </div>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('components/footer.ejs') %>

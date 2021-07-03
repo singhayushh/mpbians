@@ -1,9 +1,135 @@
 <%- include('components/header.ejs') %>
-
-<main>
-    <div class="container">
-        <h1>Edit Profile</h1>
-    </div>
-</main>
-
+<form action="/profile/edit" method="POST" class="basic">
+    <main id="profile">
+        <div class="container">
+            <h1>Edit Profile</h1>
+            <% if (message) { %>
+                <div class="warning">*<%= message %></div>
+            <% } %>
+            <div class="flex-row">
+                <div class="row span-1-of-3 visual">
+                    <img src="/img/edit.svg" alt="">
+                    <p class="separator w-100">
+                        Online Presence
+                    </p>
+                    <div class="form-item">
+                        <label for="instagram">
+                            Instagram ID
+                        </label>
+                        <input type="text" name="instagram" id="instagram" value="<%= user.instagram %>">
+                    </div>
+                    <div class="form-item">
+                        <label for="facebook">
+                            Facebook Username
+                        </label>
+                        <input type="text" name="facebook" id="facebook" value="<%= user.facebook %>">
+                    </div>
+                    <div class="form-item">
+                        <label for="twitter">
+                            Twitter Handle
+                        </label>
+                        <input type="text" name="twitter" id="twitter" value="<%= user.twitter %>">
+                    </div>
+                    <div class="form-item">
+                        <label for="linkedin">
+                            Linkedin Username
+                        </label>
+                        <input type="text" name="linkedin" id="linkedin" value="<%= user.linkedin %>">
+                    </div>
+                    <div class="form-item">
+                        <label for="website">
+                            Personal Website
+                        </label>
+                        <input type="url" name="website" id="website" value="<%= user.website %>">
+                    </div>
+                </div>
+                <div class="span-3-of-4 row flex-column flex-start" style="max-width: 600px;">
+                    <p class="separator w-100 flex-row">
+                        <span>Personal Info</span>
+                        <a href="/profile/sample" class="sm" target="_blank">View a sample profile</a>
+                    </p>
+                    <div class="flex-row w-100">
+                        <div class="row span-1-of-2">
+                            <div class="form-item">
+                                <label for="name">
+                                    Name
+                                </label>
+                                <input type="text" name="name" id="name" required value="<%= user.name %>">
+                            </div>
+                        </div>
+                        <div class="row span-1-of-2">
+                            <div class="form-item">
+                                <label for="sex">
+                                    Sex
+                                </label>
+                                <input type="text" name="sex" id="sex" required placeholder="Male or Female" value="<%= user.sex %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-row w-100">
+                        <div class="span-1-of-2 row">
+                            <div class="form-item">
+                                <label for="email">
+                                    Email
+                                </label>
+                                <input type="text" name="email" id="email" required value="<%= user.email %>">
+                            </div>
+                        </div>
+                        <div class="span-1-of-2 row">
+                            <div class="form-item">
+                                <label for="phone">
+                                    Phone
+                                </label>
+                                <input type="text" name="phone" id="phone" required value="<%= user.phone %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <label for="location">
+                            Location
+                        </label>
+                        <input type="text" name="location" id="location" required value="<%= user.location %>">
+                    </div>
+                    <div class="form-item">
+                        <label for="bio">Bio</label>
+                        <textarea name="bio" id="bio" placeholder="Brief description or featured quote" required><%= user.bio %></textarea>
+                    </div>
+                    <p class="separator w-100">
+                        Professional Info
+                    </p>
+                    <div class="flex-row w-100">
+                        <div class="span-1-of-2 row">
+                            <div class="form-item">
+                                <label for="designation">
+                                    Designation
+                                </label>
+                                <input type="text" name="designation" id="designation" required placeholder="Eg. Student" value="<%= user.designation %>">
+                            </div>
+                        </div>
+                        <div class="span-1-of-2 row">
+                            <div class="form-item">
+                                <label for="organization">
+                                    Organization
+                                </label>
+                                <input type="text" name="organization" id="organization" required value="<%= user.organization %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-item">
+                        <label for="field">Field</label>
+                        <input type="text" name="field" id="field" required placeholder="Associated domain or discipline" value="<%= user.field %>">
+                    </div>
+                    <div class="form-item">
+                        <label for="about">About</label>
+                        <textarea name="about" id="about" placeholder="Detailed description about you" style="min-height: 158px;"><%= user.about %></textarea>
+                        <div class="input-info">To add a line gap, type &lt;br&gt;</div>
+                    </div>
+                    <div class="form-item">
+                        <button type="submit" class="btn cta">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</form>
 <%- include('components/footer.ejs') %>
