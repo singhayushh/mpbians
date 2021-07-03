@@ -7,7 +7,7 @@ const auth = (passer) => {
                 req.cookies["auth_token"],
                 process.env.jwt_secret
             );
-            req.body.user = decoded;
+            req.body.user = decoded.user;
             if (decoded && passer == "block") res.redirect("/");
             else if (passer == "admin") {
                 if (decoded.role != "Admin")
