@@ -1,4 +1,5 @@
 const { FetchByUsername, FetchByYear } = require("../user/service");
+const { FetchProfile } = require("../profile/service");
 
 const Home = (_req, res) => {
     res.render("home");
@@ -16,8 +17,8 @@ const Register = (req, res) => {
 
 const User = async (req, res) => {
     const { school_id } = req.params;
-    const user = await FetchByUsername(school_id);
-    if (user) res.render("user", { user });
+    const { err, profile } = await FetchProfile(school_id);
+    if (profile) res.render("profile", { "user": profile, "auth": false });
     else res.render("404");
 };
 
