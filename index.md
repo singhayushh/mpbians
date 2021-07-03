@@ -71,6 +71,7 @@ All the user's personal data like designation, about, website etc etc and a disp
 
 <p>The project development was started roughly in the evening of 1st July 2021 and it's initial release is rolled out on the 4th of July, with around 20 hours of rigorous work.</p>
 
+
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 <h2> :clipboard: Project Structure</h2>
@@ -78,6 +79,7 @@ Rather, destructure.
 
 Instead of the MVC model, I have divided the backend code into several components (individual directories). 
 Each of these directories have separate files for routes, controllers, services and the models. 
+
 
 ```
 /
@@ -97,7 +99,9 @@ Each of these directories have separate files for routes, controllers, services 
   └── server.js           entry point for our project
 ```
 
+
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 
 <h2> :books: Steps to install and run locally</h2>
 <ul>
@@ -122,7 +126,9 @@ Each of these directories have separate files for routes, controllers, services 
 
 For any problems or issues with any of the above steps, feel free to eat my head by writing to coding.ayush@gmail.com
 
+
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
 
 <!-- CREDITS -->
 <h2 id="credits"> :scroll: Credits</h2>
