@@ -108,7 +108,7 @@ Each of these directories have separate files for routes, controllers, services 
       <p>How to: <a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm" target="_blank">Offical Documentation</a></p>
   </li>
   <li><p>Open the project folder and create a .env file</p>
-      <p>Contents of this file: <a href="https://github.com/singhayushh/MPB-Connect/wiki/Contents-of-.env" target="_blank"></a></p>
+      <p>Contents of this file: <a href="https://github.com/singhayushh/MPB-Connect/wiki/Contents-of-.env" target="_blank">Wiki link</a></p>
   </li>
   <li><p>Open terminal in the project folder and type <code>npm install</code>.</p>
       <p>This is just a one-time thing that installs all packages used in the project</p>
