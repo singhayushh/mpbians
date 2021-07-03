@@ -59,6 +59,20 @@
     max-width: 69%;
   }
 
+  .span-1-of-5 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 19.8%;
+    flex: 0 0 19.8%;
+    max-width: 19.8%;
+  }
+
+  .span-4-of-5 {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 79.6%;
+    flex: 0 0 79.6%;
+    max-width: 79.6%;
+  }
+
   header {
     top: 0;
     box-shadow: none;

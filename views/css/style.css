@@ -109,7 +109,12 @@ ol li {
 }
 
 section, main {
+    background-color: var(--bg-primary);
     width: 100%;
+}
+
+section {
+    border-top: 1px solid #f2f2f2;
 }
 
 .container {
@@ -134,6 +139,14 @@ section, main {
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-evenly;
+}
+
+.flex-start {
+    align-items: flex-start !important;
+}
+
+.center {
+    align-items: center;
 }
 
 .raised {
@@ -227,6 +240,8 @@ section, main {
     width: 100%;
 }
 
+
+
 form {
     width: 100%;
     max-width: 890px;
@@ -235,10 +250,40 @@ form {
     align-items: center;
 }
 
+form.basic {
+    width: auto;
+    max-width: none;
+    display: block;
+}
+
+.basic .form-item {
+    max-width: 600px;
+}
+
+.separator {
+    text-transform: uppercase;
+    line-height: 2.55;
+    font-weight: 800;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.separator a {
+    font-weight: 400;
+    font-size: 0.875rem;
+    color: var(--red);
+    text-transform: none;
+}
+
 form ::placeholder {
     font-family: inherit;
-    color: inherit;
+    color: #bebebe;
     opacity: 1;
+}
+
+.input-info {
+    font-size: 0.875rem;
+    color: #9e9ea7;
+    margin-bottom: var(--margin);
 }
 
 label {
@@ -275,6 +320,11 @@ input, select, textarea, button {
     transition: background-color 0.4s ease, outline 0.4s ease, color 0.4s ease, box-shadow 0.4s ease, -webkit-box-shadow 0.4s ease;
 }
 
+textarea {
+    min-height: 108px;
+    resize: vertical;
+}
+
 input:hover, select:hover, textarea:hover {
     background-color: #fff;
     border-color: rgba(0, 0, 0, 0.1);
@@ -293,6 +343,22 @@ button[type=submit] {
     margin-top: var(--margin);
     width: 100%;
     max-width: 200px;
+}
+
+.icon-set {
+    display: flex;
+    min-width: 175px;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0.5rem;
+    margin-right: calc(2 * var(--margin));
+}
+
+.icon-set ion-icon {
+    --ionicon-stroke-width: 42px;
+    color: var(--brand-color);
+    font-size: 1.25rem;
+    margin-right: 0.75rem;
 }
 
 /* Actual CSS Begins here */
@@ -352,6 +418,9 @@ ion-icon {
 /* Sections */
 main {
     background-color: var(--bg-secondary);
+}
+
+#landing main {
     min-height: 500px;
 }
 
@@ -377,4 +446,25 @@ main {
 
 .form-title {
     margin-bottom: var(--padding-vertical);
+}
+
+/* Profile Page */
+
+#profile .head, #profile .span-3-of-4 {
+    justify-content: space-between;
+}
+
+.img-wrapper {
+    border-radius: 8px;
+    width: 90%;
+    overflow: hidden;
+}
+
+.img-wrapper img {
+    width: 100%;
+}
+
+.profile-footer .icon-set {
+    position: relative;
+    float: left;
 }
