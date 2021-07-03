@@ -7,7 +7,7 @@ require("dotenv").config();
 
 // Initialize express
 const app = express();
-const port = Number(process.env.port);
+const port = Number(process.env.PORT);
 const baseurl = process.env.base_url;
 
 // Databse configuration
