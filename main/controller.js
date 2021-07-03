@@ -1,4 +1,4 @@
-const { FetchByUsername, FetchByYear } = require("../user/service");
+const { FetchByUsername, FetchByYear, FetchYearStats } = require("../user/service");
 const { FetchProfile } = require("../profile/service");
 
 const Home = (req, res) => {
@@ -32,6 +32,11 @@ const Contact = async (req, res) => {
     res.render("contact", { message, auth: req.body.role });
 };
 
+const Dashboard = async (req, res) => {
+    const stats = await FetchYearStats();
+    res.render("dashboard", { "stats": stats, "auth": req.body.role });
+};
+
 const Batch = async (req, res) => {
     const { year } = req.params;
     const users = await FetchByYear(year);
@@ -41,8 +46,9 @@ const Batch = async (req, res) => {
 module.exports = {
     Home,
     Login,
-    Register,
-    Contact,
     User,
     Batch,
+    Register,
+    Contact,
+    Dashboard,
 };

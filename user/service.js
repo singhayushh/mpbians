@@ -102,7 +102,38 @@ const FetchByUsername = async (school_id) => {
 };
 
 const FetchByYear = async (year) => {
-    return await User.find({ year }).populate({ path: "profile" });
+    return await User.find({ "profile.year": year }).populate({ path: "profile" });
+};
+
+const FetchYearStats = async () => {
+    let year = new Date().getFullYear();
+    const users = await User.find({}, { registered: 1 }).populate({ 'path': 'profile', 'select': 'year' });
+
+    let stats = [];
+
+    for (var i = 0; i < users.length; i++) {
+        for (var j = year; j >= Math.min((year - 10), 2015); j--) {
+
+            if (!stats[year - j]) {
+                stats[year - j] = {
+                    year: j,
+                    reg: 0,
+                    unreg: 0,
+                    total: 0,
+                };
+            }
+
+            if (users[i].profile.year == j) {
+                if (users[i].registered) {
+                    stats[year - j].reg++;
+                } else {
+                    stats[year - j].unreg++;
+                }
+                stats[year - j].total++;
+            }
+        }
+    }
+    return stats;
 };
 
 module.exports = {
@@ -115,4 +146,5 @@ module.exports = {
     FetchByToken,
     FetchByUsername,
     FetchByYear,
+    FetchYearStats,
 };

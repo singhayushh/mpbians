@@ -12,7 +12,7 @@
                 <div class="profile-header w-100">
                     <div class="w-100 flex-row">
                         <h2><%= user.name %></h2>
-                        <% if (auth) { %> 
+                        <% if (self) { %> 
                             <a href="/profile/edit" class="btn cta">Edit Profile</a>
                         <% } %>
                     </div>

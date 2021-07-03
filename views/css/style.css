@@ -476,3 +476,23 @@ main {
     position: relative;
     float: left;
 }
+
+.card {
+    text-align: center;
+    padding: var(--margin);
+    border-radius: 8px;
+    min-width: 250px;
+    margin-right: var(--margin);
+    margin-bottom: calc(2*var(--margin));
+}
+
+.card .icon-set {
+    min-width: none;
+    margin-right: 0rem;
+}
+
+.card-footer {
+    border-top: 1px solid #bebebe;
+    padding-top: var(--margin);
+    margin-top: var(--margin);
+}
