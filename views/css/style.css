@@ -167,6 +167,14 @@ section {
     margin-right: var(--margin);
 }
 
+.icon {
+    float: left;
+}
+
+.icon ion-icon {
+    --ionicon-stroke-width: 36px;
+}
+
 .warning {
     font-weight: 700;
     color: var(--red);
