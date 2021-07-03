@@ -3,11 +3,13 @@ const Router = express();
 const m = require("./controller");
 const auth = require("../support/auth");
 
-Router.get("/", m.Home);
-Router.get("/login", m.Login);
-Router.get("/register", m.Register);
+Router.get("/", auth("allow"), m.Home);
+Router.get("/contact", auth("allow"), m.Contact);
+Router.get("/login", auth("guest"), m.Login);
+Router.get("/register", auth("guest"), m.Register);
 
-Router.get("/:school_id", m.User);
+// Router.get("/explore", m.Alumni);
+Router.get("/:school_id", auth(), m.User);
 Router.get("/batch/:year", auth(), m.Batch);
 
 module.exports = Router;
