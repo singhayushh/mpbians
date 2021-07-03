@@ -6,13 +6,6 @@ const profile = new Schema({
         required: true,
         unique: true,
     },
-    phone: {
-        type: Number,
-    },
-    picture: {
-        type: String,
-        default: null,
-    },
     year: {
         type: Number,
         required: true,
@@ -21,11 +14,47 @@ const profile = new Schema({
         type: String,
         default: null,
     },
+    name: {
+        type: String,
+        required: true,
+    },
+    email: {
+        type: String,
+        default: null,
+    },
+    phone: {
+        type: String,
+        default: null,
+    },
+    sex: {
+        type: String,
+        default: 'Female',
+    },
+    picture: {
+        type: String,
+        default: '/img/grace.png',
+    },
     bio: {
         type: String,
         default: null,
     },
-    description: {
+    location: {
+        type: String,
+        default: null,
+    },
+    about: {
+        type: String,
+        default: null,
+    },
+    designation: {
+        type: String,
+        default: null,
+    },
+    organization: {
+        type: String,
+        default: null,
+    },
+    field: {
         type: String,
         default: null,
     },
@@ -37,7 +66,15 @@ const profile = new Schema({
         type: String,
         default: null,
     },
-    email: {
+    twitter: {
+        type: String,
+        default: null,
+    },
+    facebook: {
+        type: String,
+        default: null,
+    },
+    instagram: {
         type: String,
         default: null,
     },
