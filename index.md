@@ -1,5 +1,5 @@
 <p align="center"> 
-  <img src="https://github.com/singhayushh/MPB-Connect/blob/main/views/img/transparent.png" alt="Logo.png" width="80px" height="80px">
+  <img src="https://raw.githubusercontent.com/singhayushh/MPB-Connect/main/views/img/transparent.png" alt="Logo.png" width="80px" height="80px">
 </p>
 <h1 align="center">MPB Connect</h1>
 <h3 align="center"> Prototype of alumni web platform </h3>
@@ -8,12 +8,12 @@
 <img src="https://user-images.githubusercontent.com/52620158/124359989-f61e4d80-dc44-11eb-9529-ca870eb20d71.PNG" alt="Animated gif pacman game" height="382px">
 </p>
 
-<h2> :memo: Quick Description</h2>
+<h2> Quick Description</h2>
 <p>This project is about a working prototype for alumni web platform for different schools and universities in general, and my school - MPB in particular. 
 The platform currently allows school admins to create a user database by adding just the roll numbers and names of their students. 
 The students will then have to register to the platform using their roll numbers and create their public profiles.</p>
 
-<h2> :mag: Overview</h2>
+<h2> Overview</h2>
 
 <p>This platform includes 2 roles: Admins & Alumni</p>
 <h4>Admins:</h4>
@@ -56,9 +56,9 @@ The students will then have to register to the platform using their roll numbers
 <img src="https://user-images.githubusercontent.com/52620158/124361341-42b95700-dc4c-11eb-8d60-c86b6c27736c.PNG" height="382px"/>
  </p>
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png"/>
 
-<h2> :statue_of_liberty: Development</h2>
+<h2> Development</h2>
 
 <p>I have used nodejs, with the express framework for writing the server side code. 
 MongoDB is used as the database and the frontend work has been done in EJS (which is HTML with advanced JS support) and a lot of CSS. 
@@ -72,16 +72,16 @@ All the user's personal data like designation, about, website etc etc and a disp
 <p>The project development was started roughly in the evening of 1st July 2021 and it's initial release is rolled out on the 4th of July, with around 20 hours of rigorous work.</p>
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png"/>
 
-<h2> :clipboard: Project Structure</h2>
+<h2> Project Structure</h2>
 Rather, destructure.
 
 Instead of the MVC model, I have divided the backend code into several components (individual directories). 
 Each of these directories have separate files for routes, controllers, services and the models. 
 
 
-```
+<code>
 /
   ├── main/               routes and handlers for the endpoints exposed at "/"
   ├── profile/            routes, handlers, services and models for the profile
@@ -97,13 +97,13 @@ Each of these directories have separate files for routes, controllers, services 
   ├── package-lock.json   stores version of every package used in the project
   ├── readme.md           details and instructions about the project go here
   └── server.js           entry point for our project
-```
+</code>
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png"/>
 
 
-<h2> :books: Steps to install and run locally</h2>
+<h2> Steps to install and run locally</h2>
 <ul>
   <li><p>Create a github account and clone the repo</p>
       <p>How to: <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository-from-github/cloning-a-repository" target="_blank">Official documentation</a></p>
@@ -127,7 +127,7 @@ Each of these directories have separate files for routes, controllers, services 
 For any problems or issues with any of the above steps, feel free to eat my head by writing to coding.ayush@gmail.com
 
 
-![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png"/>
 
 
 <!-- CREDITS -->
