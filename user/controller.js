@@ -47,10 +47,10 @@ const Login = async (req, res) => {
     try {
         const { school_id, password } = req.body;
         const { err, user } = await u.Login(school_id, password);
-        console.log(user);
         if (!err) {
+            
             const token = jwt.sign({ user }, process.env.jwt_secret);
-            res.cookie(process.env.COOKIE_NAME, token, {
+            res.cookie("auth_token", token, {
                 maxAge: 10 * 24 * 60 * 60 * 1000,
                 httpOnly: true,
                 secure: false,
@@ -70,12 +70,12 @@ const Register = async (req, res) => {
         const { err, user } = await u.Register(id, password);
         if (!err) {
             const token = jwt.sign({ user }, process.env.jwt_secret);
-            res.cookie(process.env.COOKIE_NAME, token, {
+            res.cookie("auth_token", token, {
                 maxAge: 10 * 24 * 60 * 60 * 1000,
                 httpOnly: true,
                 secure: false,
             });
-            res.render("edit", { user });
+            res.render("edit", { "user": user.profile, "message": null });
         } else {
             res.redirect(`/register?message=${err}`);
         }
@@ -106,7 +106,7 @@ const Verify = async (req, res) => {
 const CreateOne = async (req, res) => {
     try {
         const { name, year, school_id } = req.body;
-        const { err, pid } = await p.Create(school_id, year);
+        const { err, pid } = await p.Create(school_id, name, year);
         if (err) {
             res.render("500", { err });
         } else {

@@ -41,8 +41,8 @@ const Verify = async (school_id, name) => {
 };
 
 const Register = async (_id, newPassword) => {
-    password = await bcrypt.hash(String(newPassword), 12);
-    const user = await User.findOne({ _id });
+    let password = await bcrypt.hash(String(newPassword), 12);
+    const user = await User.findOne({ _id }).populate('profile');
     if (user && !user.registered) {
         user.password = password;
         user.registered = true;
@@ -50,7 +50,7 @@ const Register = async (_id, newPassword) => {
         return { err: null, user: user };
     } else {
         return {
-            err: "Account already registered or does not exist",
+            err: "Account already registered",
             user: null,
         };
     }
