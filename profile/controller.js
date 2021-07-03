@@ -1,11 +1,7 @@
 const p = require("./service");
 
 const Sample = async (_req, res) => {
-    res.render("profile-sample");
-};
-
-const SampleEdit = async (_req, res) => {
-    res.render("edit");
+    res.render("profile-sample", { auth: req.body.role });
 };
 
 const Profile = async (req, res) => {
@@ -13,11 +9,14 @@ const Profile = async (req, res) => {
         const school_id = req.body.user.school_id;
         const { err, profile } = await p.FetchProfile(school_id);
         if (!err)
-            return res.render("profile", { user: profile, "auth": true });
-        else
-            return res.render('404');
+            return res.render("profile", {
+                user: profile,
+                self: true,
+                auth: req.body.role,
+            });
+        else return res.render("404", { auth: req.body.role });
     } catch (err) {
-        res.render("500", { err });
+        res.render("500", { err, auth: req.body.role });
     }
 };
 
@@ -27,17 +26,17 @@ const RenderEdit = async (req, res) => {
         const school_id = req.body.user.school_id;
         const { err, profile } = await p.FetchProfile(school_id);
         if (!err)
-            res.render("edit", { "user": profile, "message": message });
-        else 
-            res.render("404");
+            res.render("edit", { user: profile, message, auth: req.body.role });
+        else res.render("404", { auth: req.body.role });
     } catch (err) {
-        res.render("500", { err });
+        res.render("500", { err, auth: req.body.role });
     }
 };
 
 const Edit = async (req, res) => {
     try {
         const school_id = req.body.user.school_id;
+        console.log(req.body.user);
         if (req.body.sex == "Male") {
             req.body.picture = "/img/mark.png";
         } else {
@@ -50,13 +49,12 @@ const Edit = async (req, res) => {
             res.redirect(`/profile/edit?message=${err}`);
         }
     } catch (err) {
-        res.render("500", { err });
+        res.render("500", { err, auth: req.body.role });
     }
 };
 
 module.exports = {
     Sample,
-    SampleEdit,
     Profile,
     Edit,
     RenderEdit,

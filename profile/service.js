@@ -15,7 +15,7 @@ const Edit = async (school_id, data) => {
         const profile = await Profile.findOne({ school_id });
         const exists = await Profile.findOne({ email: data.email });
         if (exists && profile.email != exists.email) {
-            return "This email already in use"
+            return "This email already in use";
         }
         if (profile) {
             profile.stream = data.stream;
@@ -48,9 +48,9 @@ const Edit = async (school_id, data) => {
 const FetchProfile = async (school_id) => {
     const profile = await Profile.findOne({ school_id });
     if (!profile) {
-        return { "err": "Not found", "profile": null };
+        return { err: "Not found", profile: null };
     } else {
-        return { "err": null, "profile": profile };
+        return { err: null, profile: profile };
     }
 };
 

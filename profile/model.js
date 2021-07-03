@@ -28,11 +28,11 @@ const profile = new Schema({
     },
     sex: {
         type: String,
-        default: 'Female',
+        default: "Female",
     },
     picture: {
         type: String,
-        default: '/img/grace.png',
+        default: "/img/grace.png",
     },
     bio: {
         type: String,
