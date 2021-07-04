@@ -78,6 +78,10 @@ const profile = new Schema({
         type: String,
         default: null,
     },
+    joined: {
+        type: String,
+        default: null,
+    },
 });
 
 let Profile = model("Profile", profile);
