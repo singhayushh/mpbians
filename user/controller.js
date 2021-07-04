@@ -134,11 +134,12 @@ const CreateOne = async (req, res) => {
 };
 
 const Logout = async (req, res) => {
-    res.cookie("auth_token", null, {
+    await res.cookie("auth_token", null, {
         maxAge: 0,
         httpOnly: true,
         secure: false,
     });
+    res.redirect("/");
 };
 
 const RenderChange = (req, res) => {

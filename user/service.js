@@ -101,18 +101,6 @@ const FetchByUsername = async (school_id) => {
     return await User.findOne({ school_id }).populate({ path: "profile" });
 };
 
-const FetchByYear = async (year) => {
-    const users = await User.aggregate([
-        {
-            $match: {
-                "profile.year": year
-            }
-        }
-    ]);
-    await User.populate(users, 'profile');
-    return users;
-};
-
 const FetchYearStats = async () => {
     let year = new Date().getFullYear();
     const users = await User.find({}, { registered: 1 }).populate({ 'path': 'profile', 'select': 'name email designation organization phone year' });
@@ -167,6 +155,5 @@ module.exports = {
     SetPassword,
     FetchByToken,
     FetchByUsername,
-    FetchByYear,
     FetchYearStats,
 };
