@@ -102,16 +102,37 @@ const FetchByUsername = async (school_id) => {
 };
 
 const FetchByYear = async (year) => {
-    return await User.find({ "profile.year": year }).populate({ path: "profile" });
+    const users = await User.aggregate([
+        {
+            $match: {
+                "profile.year": year
+            }
+        }
+    ]);
+    await User.populate(users, 'profile');
+    return users;
 };
 
 const FetchYearStats = async () => {
     let year = new Date().getFullYear();
-    const users = await User.find({}, { registered: 1 }).populate({ 'path': 'profile', 'select': 'year' });
+    const users = await User.find({}, { registered: 1 }).populate({ 'path': 'profile', 'select': 'name email designation organization phone year' });
 
     let stats = [];
+    let bg = ['red-bg', 'yellow-bg', 'green-bg', 'blue-bg']
+
+    let csv = [];
 
     for (var i = 0; i < users.length; i++) {
+        if (users[i].registered) {
+            csv.push({
+                name: users[i].profile.name,
+                email: users[i].profile.email,
+                phone: users[i].profile.phone,
+                year: users[i].profile.year,
+                designation: users[i].profile.designation,
+                organization: users[i].profile.organization,
+            });
+        }
         for (var j = year; j >= Math.min((year - 10), 2015); j--) {
 
             if (!stats[year - j]) {
@@ -120,6 +141,7 @@ const FetchYearStats = async () => {
                     reg: 0,
                     unreg: 0,
                     total: 0,
+                    bg: bg[j%4],
                 };
             }
 
@@ -133,7 +155,7 @@ const FetchYearStats = async () => {
             }
         }
     }
-    return stats;
+    return { stats, csv };
 };
 
 module.exports = {

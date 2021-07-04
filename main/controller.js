@@ -33,8 +33,10 @@ const Contact = async (req, res) => {
 };
 
 const Dashboard = async (req, res) => {
-    const stats = await FetchYearStats();
-    res.render("dashboard", { "stats": stats, "auth": req.body.role });
+    const { csv, stats } = await FetchYearStats();
+    let admin = false;
+    if (req.body.user && req.body.user.role == "Admin") admin = true;
+    res.render("dashboard", { "stats": stats, "csv": csv, "auth": req.body.role, "admin": admin });
 };
 
 const Batch = async (req, res) => {

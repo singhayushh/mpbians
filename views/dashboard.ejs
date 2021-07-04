@@ -1,32 +1,109 @@
 <%- include('components/header.ejs') %>
 
-<main>
-    <div class="container">
-        <h1>Year - wise Alumni list</h1>
-        <div class="flex-wrap">
-            <% for (var i = 0; i < stats.length; i++) { %>
-            <div class="card raised flex-column">
-                <h2><%= stats[i].year %></h2>
-                <div class="card-container">
-                    <div class="icon-set">
-                        <ion-icon name="people-outline"></ion-icon>
-                        <span>Total Count: <%= stats[i].total %></span>
-                    </div>
-                    <div class="icon-set">
-                        <ion-icon name="shield-checkmark-outline"></ion-icon>
-                        <span>Registered: <%= stats[i].reg %></span>
-                    </div>
-                    <div class="icon-set">
-                        <ion-icon name="hourglass-outline"></ion-icon>
-                        <span>Yet to register: <%= stats[i].unreg %></span>
-                    </div>
+    <main id="bg">
+        <div class="container">
+            <div class="flex-row">
+                <div class="row span-1-of-2">
+                    <h2>View our alumni</h2>
+                    <p>
+                        Explore your own school to see where graduates live, the organizations they work for, and the types of jobs they have. <br/><br/>
+                        Creating an engaged, supportive alumni network is crucial to an institution’s success. If communication stops once graduates leave an institution, their understanding of the university will become stale. Instead, they should be kept informed so they can remain engaged and keep abreast on the progress of the school.
+                    </p>
+                    <p>
+                        Next to this section, you'll be able to view summary cards for each graduating batch of the school for the past 10 years. Click on a card to view a list of all alumni for that year.
+                    </p>
+                    <% if (admin) { %> 
+                        <p>
+                            Admins, click on the link below to copy the details of all registered alumni to your clipboard.
+                        </p>
+                        <button class="btn cta" onClick="copytable('data-table')">Copy to clipboard</button>
+                    <% } %>
                 </div>
-                <a href="/year/<%= stats[i].year %>" class="card-footer w-100">View members</a>
+                <div class="row span-1-of-2 visual">
+                    <img src="/img/alumni.svg" alt="">
+                </div>
             </div>
-            <% } %>
-
         </div>
-    </div>
-</main>
+        <table id="data-table" class="hidden">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Phone</td>
+                    <td>Year</td>
+                    <td>Designation</td>
+                    <td>Organization</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (var i=0; i < csv.length; i++) { %>
+                    <tr>
+                        <td>
+                            <%= csv[i].name %>
+                        </td>
+                        <td>
+                            <%= csv[i].email %>
+                        </td>
+                        <td>
+                            <%= csv[i].phone %>
+                        </td>
+                        <td>
+                            <%= csv[i].year %>
+                        </td>
+                        <td>
+                            <%= csv[i].designation %>
+                        </td>
+                        <td>
+                            <%= csv[i].organization %>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+        <script>
+            function copytable(el) {
+                var urlField = document.getElementById(el)   
+                var range = document.createRange()
+                range.selectNode(urlField)
+                window.getSelection().addRange(range) 
+                document.execCommand('copy')
+            }
+        </script>
+    </main>
 
-<%- include('components/footer.ejs') %>
+    <section>
+        <div class="container">
+            <div class="flex-wrap">
+                <% for (var i=0; i < stats.length; i++) { %>
+                    <a href="/batch/<%= stats[i].year %>" class="card raised flex-column">
+                        <div class="banner <%= stats[i].bg %>">
+                        </div>
+                        <div class="icon raised blur <%= stats[i].bg %>">
+                            <ion-icon name="school-outline"></ion-icon>
+                        </div>
+                        <h2>
+                            <%= stats[i].year %>
+                        </h2>
+                        <div class="card-container">
+                            <div class="icon-set">
+                                <ion-icon name="people-outline"></ion-icon>
+                                <span>Total Count: <%= stats[i].total %></span>
+                            </div>
+                            <div class="icon-set">
+                                <ion-icon name="shield-checkmark-outline"></ion-icon>
+                                <span>Registered: <%= stats[i].reg %></span>
+                            </div>
+                            <div class="icon-set">
+                                <ion-icon name="hourglass-outline"></ion-icon>
+                                <span>Yet to register: <%= stats[i].unreg %></span>
+                            </div>
+                        </div>
+                        <div class="card-footer w-100">View members</div>
+                    </a>
+                    <% } %>
+
+            </div>
+        </div>
+    </section>
+
+    <%- include('components/footer.ejs') %>
