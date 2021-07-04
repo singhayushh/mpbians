@@ -36,7 +36,6 @@ const RenderEdit = async (req, res) => {
 const Edit = async (req, res) => {
     try {
         const school_id = req.body.user.school_id;
-        console.log(req.body.user);
         if (req.body.sex == "Male") {
             req.body.picture = "/img/mark.png";
         } else {
