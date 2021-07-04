@@ -2,33 +2,75 @@
 
 <main>
     <div class="container">
-        <div class="flex-row">
+        <h1>Batch of <%= year %></h1>
+        <div class="flex-row stretch" style="margin-top: var(--margin);">
             <div class="row span-1-of-4 raised stats">
-                <div class="icon red red-bg">
+                <div class="icon green green-bg">
                     <ion-icon name="person-outline"></ion-icon>
                 </div>
-                <h3><%= users.length %></h3>
+                <h3><%= total %></h3>
+                <p class="sm">Total Members</p>
+            </div>
+            <div class="row span-1-of-4 raised stats">
+                <div class="icon blue blue-bg">
+                    <ion-icon name="person-outline"></ion-icon>
+                </div>
+                <h3><%= registered.length %></h3>
+                <p class="sm">Registered</p>
+            </div>
+            <div class="row span-1-of-4 raised stats">
+                <div class="icon yellow yellow-bg">
+                    <ion-icon name="person-outline"></ion-icon>
+                </div>
+                <h3><%= unregistered.length %></h3>
+                <p class="sm">Yet to register</p>
             </div>
             <div class="row span-1-of-4 raised stats">
                 <div class="icon red red-bg">
                     <ion-icon name="person-outline"></ion-icon>
                 </div>
-                <h3>Profile</h3>
-            </div>
-            <div class="row span-1-of-4 raised stats">
-                <div class="icon red red-bg">
-                    <ion-icon name="person-outline"></ion-icon>
-                </div>
-                <h3>Profile</h3>
-            </div>
-            <div class="row span-1-of-4 raised stats">
-                <div class="icon red red-bg">
-                    <ion-icon name="person-outline"></ion-icon>
-                </div>
-                <h3>Profile</h3>
+                <h3>0</h3>
+                <p class="sm">Account Requests</p>
             </div>
         </div>
     </div>
 </main>
+
+<section>
+    <div class="container">
+        <h2>Registered Users</h2>
+        <div class="flex-column">
+            <div class="table raised">
+                <div class="th flex-row">
+                    <div class="td col-1">Member</div>
+                    <div class="td col-2">About</div>
+                    <div class="td col-3">Location</div>
+                    <div class="td col-4">Joined</div>
+                </div>
+                <% for (var i = 0; i < registered.length; i++) { %>
+                    <div class="tr flex-row start">
+                        <a class="td user col-1" href="/<%= registered[i].school_id %>">
+                            <div class="user-profile">
+                                <img src="<%= registered[i].picture %>" alt="Profile picture">
+                            </div>
+                            <div class="user-info">
+                                <div class="sup"><%= registered[i].name %></div>
+                                <div class="sub">
+                                    <%= registered[i].email %>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="td col-2">
+                            <div class="sup"><%= registered[i].designation %></div>
+                            <div class="sub"><%= registered[i].organization %></div>
+                        </div>
+                        <div class="td col-3"><%= registered[i].location %></div>
+                        <div class="td col-4"><%= registered[i].joined %></div>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>
 
 <%- include('components/footer.ejs') %>

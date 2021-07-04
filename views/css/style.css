@@ -494,7 +494,7 @@ main {
     background-color: var(--bg-primary);
 }
 
-.card:hover {
+.card:hover, .stats:hover {
     scale: 1.08;
     color: inherit;
 }
@@ -534,7 +534,7 @@ footer {
     flex-direction: column;
     padding: 0rem var(--padding-horizontal);
     padding-top: var(--padding-vertical);
-    background-color: var(--yellow-bg);
+    background-color: #ffefd5;
 }
 
 .footer-wrapper {
@@ -662,6 +662,82 @@ footer li {
 }
 
 .stats {
+    background-color: var(--bg-primary);
     border-radius: 8px;
     padding: var(--margin);
+    transition: all 0.4s ease-in-out;
+}
+
+.table {
+    width: 100%;
+    border-radius: 8px;
+    padding: var(--margin) 0.5rem;
+}
+
+.start {
+    border-top: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.th, .sub {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.th .col-1 {
+    padding-left: 0.5rem;
+}
+
+.sub {
+    font-weight: 500;
+    width: 100%;
+    font-size: .875rem;
+}
+
+.sup {
+    width: 100%;
+    font-weight: 600;
+}
+
+.col-1 {
+    width: 35%;
+}
+
+.col-2 {
+    width: 25%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 15%;
+}
+
+.th, .tr {
+    align-items: stretch;
+    padding: 0.875rem;
+}
+
+.td {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.user-profile {
+    height: 4rem;
+    width: 4rem;
+    overflow: hidden;
+    margin-right: var(--margin);
+}
+
+.user-profile img {
+    width: 100%;
 }
