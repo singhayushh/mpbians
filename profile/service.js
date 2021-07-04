@@ -1,3 +1,4 @@
+const Utils = require("../support/utils");
 const Profile = require("./model");
 
 const Create = async (school_id, name, year) => {
@@ -18,6 +19,7 @@ const Edit = async (school_id, data) => {
             return "This email already in use";
         }
         if (profile) {
+            if (!profile.email) profile.joined = Utils.getDate();
             profile.stream = data.stream;
             profile.name = data.name;
             profile.email = data.email;
@@ -54,8 +56,23 @@ const FetchProfile = async (school_id) => {
     }
 };
 
+const FetchByYear = async (year) => {
+    const users = await Profile.find({ year });
+    let reg = [];
+    let unreg = [];
+    for (var i = 0; i < users.length; i++) {
+        if (!users[i].email) {
+            unreg.push(users[i]);
+        } else {
+            reg.push(users[i]);
+        }
+    }
+    return { total: users.length, registered: reg, unregistered: unreg };
+};
+
 module.exports = {
     Create,
     Edit,
     FetchProfile,
+    FetchByYear,
 };
