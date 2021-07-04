@@ -64,8 +64,8 @@
                             <div class="sup"><%= registered[i].designation %></div>
                             <div class="sub"><%= registered[i].organization %></div>
                         </div>
-                        <div class="td col-3"><%= registered[i].location %></div>
-                        <div class="td col-4"><%= registered[i].joined %></div>
+                        <div class="td col-3"><div class="sup hide">Location: </div><%= registered[i].location %></div>
+                        <div class="td col-4"><div class="sup hide">Joined: </div><%= registered[i].joined %></div>
                     </div>
                 <% } %>
             </div>

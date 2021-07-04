@@ -406,7 +406,7 @@ header img {
     height: 100%;
 }
 
-.logo, .account-icon, nav span {
+.hero, .account-icon, nav span, .nav-buttons {
     display: none;
 }
 
@@ -513,6 +513,7 @@ main {
 
 .card h2 {
     margin-top: 30px;
+    width: 100%;
 }
 
 .card .icon-set {
@@ -535,6 +536,7 @@ footer {
     padding: 0rem var(--padding-horizontal);
     padding-top: var(--padding-vertical);
     background-color: #ffefd5;
+    margin-bottom: 5.5rem;
 }
 
 .footer-wrapper {
@@ -674,10 +676,6 @@ footer li {
     padding: var(--margin) 0.5rem;
 }
 
-.start {
-    border-top: 1px solid rgba(0, 0, 0, 0.03);
-}
-
 .th, .sub {
     color: rgba(0, 0, 0, 0.4);
 }
@@ -695,22 +693,6 @@ footer li {
 .sup {
     width: 100%;
     font-weight: 600;
-}
-
-.col-1 {
-    width: 35%;
-}
-
-.col-2 {
-    width: 25%;
-}
-
-.col-3 {
-    width: 25%;
-}
-
-.col-4 {
-    width: 15%;
 }
 
 .th, .tr {
@@ -741,3 +723,22 @@ footer li {
 .user-profile img {
     width: 100%;
 }
+
+/* Queries */
+
+.th {
+    display: none;
+  }
+
+  .col-1, .col-2, .col-3, .col-4 {
+      width: 100%;
+      margin-bottom: var(--margin);
+  }
+
+  .start {
+      border-top: none;
+  }
+
+  .tr {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  }
