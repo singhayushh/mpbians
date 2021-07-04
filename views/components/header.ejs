@@ -70,6 +70,15 @@
                             <span>Contact</span>
                         </a>
                     </li>
+                    <% if (!auth) { %> 
+                        <li class="hide">
+                            <a href="/profile/me">
+                                <div class="icon">
+                                    <ion-icon name="happy-outline"></ion-icon>
+                                </div>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
             </nav>
             

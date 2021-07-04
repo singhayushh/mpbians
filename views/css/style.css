@@ -668,6 +668,7 @@ footer li {
     border-radius: 8px;
     padding: var(--margin);
     transition: all 0.4s ease-in-out;
+    margin-bottom: var(--margin);
 }
 
 .table {
