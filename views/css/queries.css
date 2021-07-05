@@ -4,6 +4,13 @@
 
 @media screen and (min-device-width: 890px), screen and (min-width: 890px) {
 
+  :root {
+    --heading-size: 3rem;
+    --logo-size: 2rem;
+    --subheading-size: 1.5rem;
+    --padding-horizontal: 2.5rem;
+  }
+
   main {
     margin-top: 6rem;
   }
@@ -136,6 +143,22 @@
 
   .th {
     display: flex;
+  }
+
+  .img-wrapper {
+    width: 90%;
+  }
+
+  .profile-header {
+      margin: 0rem;
+  }
+
+  .profile-header h2 {
+    width: max-content;
+  }
+
+  .profile-header a {
+    display: block;
   }
 
 }

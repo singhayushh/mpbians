@@ -9,12 +9,12 @@
 }
 
 :root {
-    --heading-size: 3rem;
-    --logo-size: 2rem;
-    --subheading-size: 1.5rem;
+    --heading-size: 1.75rem;
+    --logo-size: 1.5rem;
+    --subheading-size: 1.25rem;
     --font-size: 1rem;
     --padding-vertical: 3.5rem;
-    --padding-horizontal: 2.5rem;
+    --padding-horizontal: 1.5rem;
     --margin: 1rem;
     --bg-primary: #FFFFFF;
     --bg-secondary: #FFFCF7;
@@ -190,7 +190,7 @@ section {
 }
 
 .blue {
-    color: var(--blue);
+    color: var(--blue) !important;
 }
 
 .blue-bg {
@@ -293,6 +293,8 @@ form ::placeholder {
 }
 
 .input-info {
+    display: inline-block;
+    width: 100%;
     font-size: 0.875rem;
     color: #9e9ea7;
     margin-bottom: var(--margin);
@@ -302,6 +304,10 @@ label {
     display: block;
     margin-bottom: .2rem;
     font-weight: 700;
+}
+
+.visual {
+    order: -1;
 }
 
 .visual img {
@@ -440,6 +446,7 @@ main {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    margin-bottom: var(--margin);
 }
 
 #landing img {
@@ -468,11 +475,27 @@ main {
 
 .img-wrapper {
     border-radius: 8px;
-    width: 90%;
+    width: 50%;
     overflow: hidden;
 }
 
 .img-wrapper img {
+    width: 100%;
+}
+
+.profile-header {
+    margin: calc(2 * var(--margin)) 0rem;
+}
+
+.hide.btn {
+    margin-top: calc(2 * var(--margin));
+}
+
+.profile-header a {
+    display: none;
+}
+
+.profile-header h2 {
     width: 100%;
 }
 
@@ -743,3 +766,10 @@ footer li {
   .tr {
     border-bottom: 1px solid rgba(0, 0, 0, 0.03);
   }
+
+  /* 404 Page */
+
+#pg404 img {
+    height: 80vh;
+    width: auto;
+}

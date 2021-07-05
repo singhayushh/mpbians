@@ -34,9 +34,12 @@
                     </div>
                     <div class="icon-set">
                         <ion-icon name="mail-outline"></ion-icon>
-                        <span><%= user.email %></span>
+                        <a href="mailto:<%= user.email %>"><%= user.email %></a>
                     </div>
                 </div>
+                <% if (self) { %> 
+                    <a href="/profile/edit" class="btn cta hide">Edit Profile</a>
+                <% } %>
             </div>
         </div>
     </div>
@@ -50,19 +53,19 @@
                 <p>
                     <div class="icon-set">
                         <ion-icon name="logo-instagram"></ion-icon>
-                        <span><%= user.instagram %></span>
+                        <a href="https://instagram.com/<%= user.instagram %>/" target="_blank"><%= user.instagram %></a>
                     </div>
                     <div class="icon-set">
                         <ion-icon name="logo-facebook"></ion-icon>
-                        <span><%= user.facebook %></span>
+                        <a href="https://facebook.com/<%= user.facebook %>/" target="_blank"><%= user.facebook %></a>
                     </div>
                     <div class="icon-set">
                         <ion-icon name="logo-twitter"></ion-icon>
-                        <span><%= user.twitter %></span>
+                        <a href="https://twitter.com/<%= user.twitter %>/" target="_blank"><%= user.twitter %></a>
                     </div>
                     <div class="icon-set">
                         <ion-icon name="logo-linkedin"></ion-icon>
-                        <span><%= user.linkedin %></span>
+                        <a href="https://linkedin.com/in/<%= user.linkedin %>/" target="_blank"><%= user.linkedin %></a>
                     </div>
                 </p>
                 <h3>School</h3>
@@ -82,11 +85,11 @@
                 <p>
                     <div class="icon-set">
                         <ion-icon name="earth-outline"></ion-icon>
-                        <span><%= user.website %></span>
+                        <a href="<%= user.website %>" target="_blank"><%= user.website %></a>
                     </div>
                     <div class="icon-set">
                         <ion-icon name="logo-linkedin"></ion-icon>
-                        <span><%= user.linkedin %></span>
+                        <a href="https://linkedin.com/in/<%= user.linkedin %>/" target="_blank"><%= user.linkedin %></a>
                     </div>
                 </p>
             </div>
