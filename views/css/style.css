@@ -438,6 +438,10 @@ main {
     background-color: var(--bg-secondary);
 }
 
+.hero-text {
+    margin: 108px 0rem;
+}
+
 #landing main {
     min-height: 500px;
 }
@@ -694,6 +698,10 @@ footer li {
     margin-bottom: var(--margin);
 }
 
+table {
+    font-size: 1px;
+}
+
 .table {
     width: 100%;
     border-radius: 8px;
@@ -770,6 +778,6 @@ footer li {
   /* 404 Page */
 
 #pg404 img {
-    height: 80vh;
-    width: auto;
+    height: auto;
+    width: 100%;
 }
