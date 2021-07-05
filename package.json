@@ -12,19 +12,19 @@
     "scripts": {
         "start": "node server.js"
     },
-    "name": "mpb-connect",
+    "name": "mpbians",
     "version": "0.0.0",
-    "description": "mpb almuni platform",
+    "description": "almuni platform for mpb",
     "main": "server.js",
     "devDependencies": {},
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/singhayushh/MPB-connect.git"
+        "url": "git+https://github.com/singhayushh/mpbians.git"
     },
     "author": "Ayush Singh",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/singhayushh/MPB-Connect/issues"
+        "url": "https://github.com/singhayushh/mpbians/issues"
     },
-    "homepage": "https://github.com/singhayushh/MPB-Connect#readme"
+    "homepage": "https://github.com/singhayushh/mpbians#readme"
 }
