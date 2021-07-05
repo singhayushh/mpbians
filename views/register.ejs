@@ -9,7 +9,7 @@
                 <div class="row span-1-of-2 flex-wrap">
                     <form action="/user/new" method="POST">
                         <div class="form-title">
-                            <h2>Sign up to MPB Connect</h2>
+                            <h2>Sign up to MPBians</h2>
                         </div>
                         <% if (message) { %>
                         <div class="warning">*<%= message %></div>
@@ -25,6 +25,7 @@
                                 User ID
                             </label>
                             <input type="text" name="school_id" id="school_id" required>
+                            <div class="input-info">Format: 20130440</div>
                         </div>
                         <div class="form-item">
                             <button type="submit" class="btn cta">Sign up</button>
