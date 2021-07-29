@@ -42,7 +42,7 @@
                         <label for="website">
                             Personal Website
                         </label>
-                        <input type="url" name="website" id="website" value="<%= user.website %>">
+                        <input type="url" name="website" id="website" value="<%= user.website %>" pattern="https?://.+">
                     </div>
                     <div class="form-item hide">
                         <button type="submit" class="btn cta">Submit</button>
@@ -70,7 +70,7 @@
                                 <label for="sex">
                                     Sex
                                 </label>
-                                <input type="text" name="sex" id="sex" required placeholder="Male or Female" value="<%= user.sex %>">
+                                <input type="text" name="sex" id="sex" required placeholder="Male or Female" value="<%= user.sex %>" pattern="Male|Female" oninvalid="setCustomValidity('Enter either Male or Female only')">
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                                 <label for="phone">
                                     Phone
                                 </label>
-                                <input type="text" name="phone" id="phone" required value="<%= user.phone %>" pattern="^\+[1-9]{1}[0-9]{3,14}$" oninvalid="setCustomValidity('Please enter a valid phone number')">
+                                <input type="text" name="phone" id="phone" required value="<%= user.phone %>" pattern="^\d{10}$" oninvalid="setCustomValidity('Please enter a valid 10 digit phone number')">
                             </div>
                         </div>
                     </div>
@@ -126,6 +126,20 @@
                     <div class="form-item">
                         <label for="field">Field</label>
                         <input type="text" name="field" id="field" required placeholder="Associated domain or discipline" value="<%= user.field %>">
+                    </div>
+                    <div class="flex-row w-100">
+                        <div class="span-1-of-2 row">
+                            <div class="form-item">
+                                <label for="stream">Year of passing</label>
+                                <input type="text" disabled placeholder="Do not change this" value="<%= user.year %>">
+                            </div>
+                        </div>
+                        <div class="span-1-of-2 row">
+                            <div class="form-item">
+                                <label for="stream">Stream</label>
+                                <input type="text" name="stream" id="stream" required placeholder="Science or Commerce" value="<%= user.stream %>" pattern="Science|Commerce" oninvalid="setCustomValidity('Enter either Science or Commerce only')">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-item">
                         <label for="about">About</label>
