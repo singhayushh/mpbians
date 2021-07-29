@@ -481,6 +481,7 @@ main {
     border-radius: 8px;
     width: 50%;
     overflow: hidden;
+    position: relative;
 }
 
 .img-wrapper img {
@@ -784,4 +785,19 @@ table {
 
 #profile .visual {
     order: 2;
+}
+
+.edit-btn {
+    cursor: pointer;
+    position: absolute;
+    bottom: 15px;
+    right: 5px;
+    width: max-content;
+    padding: 2px;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

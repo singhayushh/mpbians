@@ -25,6 +25,7 @@ const Edit = async (school_id, data) => {
             profile.email = data.email;
             profile.phone = data.phone;
             profile.sex = data.sex;
+            if (!profile.picture)
             profile.picture = data.picture;
             profile.bio = data.bio;
             profile.location = data.location;
@@ -42,6 +43,14 @@ const Edit = async (school_id, data) => {
         } else {
             return "Error finding the user";
         }
+    } catch (err) {
+        return err.message;
+    }
+};
+
+const EditPicture = async (school_id, data) => {
+    try {
+        await Profile.findOneAndUpdate({ school_id }, data);
     } catch (err) {
         return err.message;
     }
@@ -73,6 +82,7 @@ const FetchByYear = async (year) => {
 module.exports = {
     Create,
     Edit,
+    EditPicture,
     FetchProfile,
     FetchByYear,
 };

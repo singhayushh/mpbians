@@ -5,6 +5,19 @@
         <div class="flex-row stretch head">
             <div class="row span-1-of-4">
                 <div class="img-wrapper">
+                    <% if (self) { %>
+                        <form action="/profile/picture" method="post" class="basic" id="picture-form" enctype="multipart/form-data">
+                            <input type="file" id="selectedFile" style="display: none;" name="file" />
+                            <button type="button" onclick="document.getElementById('selectedFile').click();" class="edit-btn">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </button>                            
+                        </form>
+                        <script>
+                            document.getElementById("selectedFile").onchange = function() {
+                                document.getElementById("picture-form").submit();
+                            };
+                        </script>
+                    <% } %>
                     <img src="<%= user.picture %>" alt="Profile">
                 </div>
             </div>

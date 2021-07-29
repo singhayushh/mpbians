@@ -52,9 +52,27 @@ const Edit = async (req, res) => {
     }
 };
 
+const EditPicture = async (req, res) => {
+    try {
+        const school_id = req.body.user.school_id;
+
+        const picture = req.file.path;
+
+        const err = await p.EditPicture(school_id, { picture });
+        if (!err) {
+            res.redirect("/profile/me");
+        } else {
+            res.redirect(`/profile/edit?message=${err}`);
+        }
+    } catch (err) {
+        res.render("500", { err, auth: req.body.role });
+    }
+};
+
 module.exports = {
     Sample,
     Profile,
     Edit,
+    EditPicture,
     RenderEdit,
 };

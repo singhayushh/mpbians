@@ -32,7 +32,7 @@ const profile = new Schema({
     },
     picture: {
         type: String,
-        default: "/img/grace.png",
+        default: null,
     },
     bio: {
         type: String,
