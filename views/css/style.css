@@ -439,7 +439,7 @@ main {
 }
 
 .hero-text {
-    margin: 108px 0rem;
+    margin: calc(2 * var(--margin)) 0rem;
 }
 
 #landing main {
@@ -758,7 +758,7 @@ table {
 
 /* Queries */
 
-.th {
+.th, .unhide {
     display: none;
   }
 
@@ -780,4 +780,8 @@ table {
 #pg404 img {
     height: auto;
     width: 100%;
+}
+
+#profile .visual {
+    order: 2;
 }

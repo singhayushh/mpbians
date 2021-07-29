@@ -155,7 +155,7 @@
       width: 15%;
   }
 
-  .th {
+  .th, .unhide {
     display: flex;
   }
 
@@ -173,6 +173,10 @@
 
   .profile-header a {
     display: block;
+  }
+
+  #profile .visual {
+    order: 0;
   }
 
 }
