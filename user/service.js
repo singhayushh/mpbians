@@ -12,6 +12,10 @@ const Create = async (name, school_id, pid) => {
     return;
 };
 
+const CreateMany = async (data) => {
+    return await User.insertMany(data);
+};
+
 const Login = async (school_id, password) => {
     const user = await User.findOne({ school_id, registered: true });
     if (!user) {
@@ -103,10 +107,13 @@ const FetchByUsername = async (school_id) => {
 
 const FetchYearStats = async () => {
     let year = new Date().getFullYear();
-    const users = await User.find({}, { registered: 1 }).populate({ 'path': 'profile', 'select': 'name email designation organization phone year' });
+    const users = await User.find({}, { registered: 1 }).populate({
+        path: "profile",
+        select: "name email designation organization phone year",
+    });
 
     let stats = [];
-    let bg = ['red-bg', 'yellow-bg', 'green-bg', 'blue-bg']
+    let bg = ["red-bg", "yellow-bg", "green-bg", "blue-bg"];
 
     let csv = [];
 
@@ -121,15 +128,14 @@ const FetchYearStats = async () => {
                 organization: users[i].profile.organization,
             });
         }
-        for (var j = year; j >= Math.min((year - 10), 2015); j--) {
-
+        for (var j = year; j >= Math.min(year - 10, 2015); j--) {
             if (!stats[year - j]) {
                 stats[year - j] = {
                     year: j,
                     reg: 0,
                     unreg: 0,
                     total: 0,
-                    bg: bg[j%4],
+                    bg: bg[j % 4],
                 };
             }
 
@@ -148,6 +154,7 @@ const FetchYearStats = async () => {
 
 module.exports = {
     Create,
+    CreateMany,
     Login,
     Verify,
     Register,

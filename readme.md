@@ -23,8 +23,9 @@ The students will then have to register to the platform using their roll numbers
   <li><b>Year of passing</b> - Year in which the student passed the school</li>
   <li><b>Unique student id</b> - Either roll number or registration number of any other unique identification number that is known to the student as well as school.</li>
 
-  To add new user to the database, the admin should log in to the website using admin credentials and go to `/user/add` page which looks like the following:
-  <br/><br/>
+To add new user to the database, the admin should log in to the website using admin credentials and go to `/user/add` page which looks like the following:
+<br/><br/>
+
   <p align="center"> 
   <img src="https://user-images.githubusercontent.com/52620158/124360787-4ac3c780-dc49-11eb-9c54-95a9e687547e.PNG" height="382px">
   </p>
@@ -33,18 +34,17 @@ The students will then have to register to the platform using their roll numbers
 
 <h4>Alumni:</h4>
 
-  The school alumni should first register themselves to the website by clicking on the register button from the home page or going to the `/register` endpoint. 
-  In this page, you need to enter your full name and the school id (user id) to be able to proceed with the registration flow. 
- You will then be directed to a page to create a password for your account followed by adding your profile details. Make sure you add all the fields correctly and hit submit!
+The school alumni should first register themselves to the website by clicking on the register button from the home page or going to the `/register` endpoint.
+In this page, you need to enter your full name and the school id (user id) to be able to proceed with the registration flow.
+You will then be directed to a page to create a password for your account followed by adding your profile details. Make sure you add all the fields correctly and hit submit!
 
   <p align="center">
   <img src="https://user-images.githubusercontent.com/52620158/124361170-587a4c80-dc4b-11eb-97c7-976afd93bd1b.PNG" height="382px">
   </p>
 
-  Note that if you are unable to register and are receiving the **"Invalid User ID or Name"**, the admin might have not added you to the database yet. 
-  If you are receiving the error message **"This account has already been registered to the platform"**, it means that someone else has falsely registered to the platform using your name and id.
-  In either case, feel free to contact the school or the developer (using the contact page available at `/contact`) to get your account back.
-
+Note that if you are unable to register and are receiving the **"Invalid User ID or Name"**, the admin might have not added you to the database yet.
+If you are receiving the error message **"This account has already been registered to the platform"**, it means that someone else has falsely registered to the platform using your name and id.
+In either case, feel free to contact the school or the developer (using the contact page available at `/contact`) to get your account back.
 
 <h4>After logging in:</h4>
 <ul>
@@ -76,8 +76,8 @@ All the user's personal data like designation, about, website etc etc and a disp
 <h2> :clipboard: Project Structure</h2>
 Rather, destructure.
 
-Instead of the MVC model, I have divided the backend code into several components (individual directories). 
-Each of these directories have separate files for routes, controllers, services and the models. 
+Instead of the MVC model, I have divided the backend code into several components (individual directories).
+Each of these directories have separate files for routes, controllers, services and the models.
 
 ```
 /
@@ -127,5 +127,5 @@ For any problems or issues with any of the above steps, feel free to eat my head
 <!-- CREDITS -->
 <h2 id="credits"> :scroll: Credits</h2>
 
-- https://storyset.com/ - for wonderful illustrations
-- https://github.com/ma-shamshiri - for the github template to start writing from
+-   https://storyset.com/ - for wonderful illustrations
+-   https://github.com/ma-shamshiri - for the github template to start writing from

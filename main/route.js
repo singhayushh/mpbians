@@ -4,6 +4,7 @@ const m = require("./controller");
 const auth = require("../support/auth");
 
 Router.get("/", auth("allow"), m.Home);
+Router.get("/csv", auth("allow"), m.Csv);
 Router.get("/login", auth("guest"), m.Login);
 Router.get("/register", auth("guest"), m.Register);
 Router.get("/alumni", auth("allow"), m.Dashboard);

@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const fs = require("fs");
+const csv = require("csv-parser");
 const jwt = require("jsonwebtoken");
 const u = require("./service");
 const p = require("../profile/service");
@@ -133,6 +135,42 @@ const CreateOne = async (req, res) => {
     }
 };
 
+const CreateMany = async (req, res) => {
+    try {
+        const file_csv = req.file.path;
+        const file_mt = req.file.mimetype;
+
+        if (
+            file_mt != "text/csv" &&
+            file_mt != "application/vnd.ms-excel" &&
+            file_mt !=
+                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        ) {
+            fs.unlinkSync(file_csv);
+            return res
+                .status(405)
+                .json({ message: "File should be in file.csv Format only" });
+        }
+
+        fs.createReadStream(file_csv)
+            .pipe(csv())
+            .on("data", async (data) => {
+                let { school_id, name, year } = data;
+                const { err, pid } = await p.Create(school_id, name, year);
+                if (err) {
+                    res.render("500", { err, auth: req.body.role });
+                } else {
+                    await u.Create(name, school_id, pid);
+                }
+            })
+            .on("end", async () => {
+                res.redirect(`/alumni`);
+            });
+    } catch (err) {
+        res.render("500", { err, auth: req.body.role });
+    }
+};
+
 const Logout = async (req, res) => {
     await res.cookie("auth_token", null, {
         maxAge: 0,
@@ -166,6 +204,7 @@ module.exports = {
     Register,
     Create,
     CreateOne,
+    CreateMany,
     RenderChange,
     RenderReset,
 };
