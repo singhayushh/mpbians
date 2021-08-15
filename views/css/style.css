@@ -457,6 +457,10 @@ main {
     width: 100%;
 }
 
+#about .span-1-of-2 {
+    margin: 1%;
+}
+
 #auth .row {
     align-items: center;
     justify-content: center;

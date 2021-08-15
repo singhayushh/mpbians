@@ -1,5 +1,5 @@
 <p align="center"> 
-  <img src="views/img/transparent.png" alt="Email Logo.png" width="80px" height="80px">
+  <img src="views/img/mpb_transparent.png" alt="Email Logo.png" width="80px" height="80px">
 </p>
 <h1 align="center">MPBians</h1>
 <h3 align="center"> Prototype of alumni web platform </h3>

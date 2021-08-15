@@ -84,5 +84,15 @@ const profile = new Schema({
     },
 });
 
+profile.index({
+    name: 'text',
+    email: 'text',
+    phone: 'text',
+    location: 'text',
+    designation: 'text',
+    organization: 'text',
+    field: 'text',
+});
+
 let Profile = model("Profile", profile);
 module.exports = Profile;

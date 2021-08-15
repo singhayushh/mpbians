@@ -26,7 +26,10 @@
                     <div class="w-100 flex-row">
                         <h2><%= user.name %></h2>
                         <% if (self) { %> 
-                            <a href="/profile/edit" class="btn cta">Edit Profile</a>
+                            <div>
+                                <a href="/profile/edit" class="btn cta">Edit Profile</a>
+                                <a href="" class="btn flat">Logout</a>
+                            </div>
                         <% } %>
                     </div>
                     <span><%= user.designation %>, <%= user.organization %></span>
@@ -52,6 +55,7 @@
                 </div>
                 <% if (self) { %> 
                     <a href="/profile/edit" class="btn cta hide">Edit Profile</a>
+                    <a href="/profile/edit" class="btn flat hide" style="margin-top: 0.5rem;">Logout</a>
                 <% } %>
             </div>
         </div>

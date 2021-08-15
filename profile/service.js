@@ -79,10 +79,25 @@ const FetchByYear = async (year) => {
     return { total: users.length, registered: reg, unregistered: unreg };
 };
 
+const Search = async (search_text, limit, offset) => {
+    try {
+        const profiles = await Profile.find({
+            $text: { $search: `"${search_text}"` },
+        })
+            .sort({ _id: 1 })
+            .skip(offset > 0 ? (offset - 1) * limit : 0)
+            .limit(limit);
+        return { err: null, results: profiles };
+    } catch (err) {
+        return { err, results: [] }
+    }
+};
+
 module.exports = {
     Create,
     Edit,
     EditPicture,
     FetchProfile,
     FetchByYear,
+    Search,
 };

@@ -173,6 +173,7 @@
 
   .profile-header a {
     display: block;
+    margin-right: 1rem;
   }
 
   #profile .visual {

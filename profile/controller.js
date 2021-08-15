@@ -69,10 +69,25 @@ const EditPicture = async (req, res) => {
     }
 };
 
+const Search = async (req, res) => {
+    try {
+        const search_text = req.body;
+        const profiles = await p.Search(search_text, 0, 25);
+        if (profiles.err) {
+            res.render("500", { 'err': profiles.err, auth: req.body.role });
+        } else {
+            res.render("search", { 'results': profiles.result, auth: req.body.role });
+        }
+    } catch (err) {
+        res.render("500", { err, auth: req.body.role });
+    }
+};
+
 module.exports = {
     Sample,
     Profile,
     Edit,
     EditPicture,
     RenderEdit,
+    Search
 };
