@@ -71,12 +71,12 @@ const EditPicture = async (req, res) => {
 
 const Search = async (req, res) => {
     try {
-        const search_text = req.body;
+        const search_text = req.body.search_text;
         const profiles = await p.Search(search_text, 0, 25);
         if (profiles.err) {
             res.render("500", { 'err': profiles.err, auth: req.body.role });
         } else {
-            res.render("search", { 'results': profiles.result, auth: req.body.role });
+            res.render("search", { 'results': profiles.results, auth: req.body.role, search_text });
         }
     } catch (err) {
         res.render("500", { err, auth: req.body.role });

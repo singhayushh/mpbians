@@ -7,7 +7,7 @@ const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 
 Router.get("/add", auth("admin"), u.Create);
-Router.get("/logout", auth("admin"), u.Logout);
+Router.get("/logout", auth(), u.Logout);
 Router.get("/change-password", auth(), u.RenderChange);
 Router.get("/reset-password/:token", auth("allow"), u.RenderReset);
 

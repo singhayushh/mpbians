@@ -805,3 +805,58 @@ table {
     align-items: center;
     justify-content: center;
 }
+
+#search {
+    background-color: var(--bg-primary) !important;
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 80px;
+    background-color: var(--bg-secondary);
+    z-index: 1;
+}
+
+.search {
+    flex-direction: row;
+    background-color: var(--bg-primary);
+    z-index: 2;
+    border-radius: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.search .icon {
+    margin-left: 8px;
+    margin-right: 0px;
+}
+
+.search input, .search input:focus, .search input:hover {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.search button {
+    margin-top: 0px;
+    background-color: transparent;
+    border: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    max-width: none;
+    width: max-content;
+    font-weight: 600;
+    border-radius: 0px;
+    border-left: 1px solid #e7e7e9;
+}
+
+.results {
+    padding-top: 0px;
+}
+
+.results h2, .results p {
+    text-align: center;
+}

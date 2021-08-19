@@ -9,6 +9,10 @@ const Csv = (req, res) => {
     res.render("csv", { auth: req.body.role });
 };
 
+const Search = (req, res) => {
+    res.render("search", { auth: req.body.role, search_text: '', 'results': [] });
+};
+
 const Login = (req, res) => {
     const message = req.query.message;
     res.render("login", { message, auth: req.body.role });
@@ -65,6 +69,7 @@ module.exports = {
     Csv,
     Login,
     User,
+    Search,
     Batch,
     Register,
     Contact,

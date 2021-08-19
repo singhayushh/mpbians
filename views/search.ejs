@@ -1,0 +1,67 @@
+<%- include('components/header.ejs') %>
+
+    <main id="search">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="flex-row stretch">
+                <form action="/profile/search" method="POST" class="raised search">
+                    <div class="icon">
+                        <ion-icon name="search"></ion-icon>
+                    </div>
+                    <input type="text" name="search_text" id="search_text" value="<%= search_text%>">
+                    <button type="submit" class="btn">Enter</button>
+                </form>
+            </div>
+        </div>
+        <div class="container results">
+            <% if (search_text !='' ) { %>
+                <h2>❝<%= search_text %>❞</h2>
+                <p class="sm"><%= results.length%> registered alumni found</p>
+                <div class="flex-column">
+                    <div class="table raised">
+                        <div class="th flex-row">
+                            <div class="td col-1">Member</div>
+                            <div class="td col-2">About</div>
+                            <div class="td col-3">Location</div>
+                            <div class="td col-4">Year</div>
+                        </div>
+                        <% for (var i=0; i < results.length; i++) { %>
+                            <div class="tr flex-row start">
+                                <a class="td user col-1" href="/<%= results[i].school_id %>">
+                                    <div class="user-profile">
+                                        <img src="<%= results[i].picture %>" alt="Profile picture">
+                                    </div>
+                                    <div class="user-info">
+                                        <div class="sup">
+                                            <%= results[i].name %>
+                                        </div>
+                                        <div class="sub">
+                                            <%= results[i].email %>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="td col-2">
+                                    <div class="sup">
+                                        <%= results[i].designation %>
+                                    </div>
+                                    <div class="sub">
+                                        <%= results[i].organization %>
+                                    </div>
+                                </div>
+                                <div class="td col-3">
+                                    <div class="sup hide">Location: </div>
+                                    <%= results[i].location %>
+                                </div>
+                                <div class="td col-4">
+                                    <div class="sup hide">Year of passing: </div>
+                                    <%= results[i].year %>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </main>
+
+    <%- include('components/footer.ejs') %>

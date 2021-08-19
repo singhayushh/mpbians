@@ -82,7 +82,8 @@ const FetchByYear = async (year) => {
 const Search = async (search_text, limit, offset) => {
     try {
         const profiles = await Profile.find({
-            $text: { $search: `"${search_text}"` },
+            $text: { $search: `"${search_text}"` }, 
+            email: { $ne: null },
         })
             .sort({ _id: 1 })
             .skip(offset > 0 ? (offset - 1) * limit : 0)
