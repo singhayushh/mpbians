@@ -3,7 +3,8 @@
     <main id="search">
         <div class="overlay"></div>
         <div class="container">
-            <div class="flex-row stretch">
+            <div class="flex-column stretch">
+                <h2>Search Alumni</h2>
                 <form action="/profile/search" method="POST" class="raised search">
                     <div class="icon">
                         <ion-icon name="search"></ion-icon>
@@ -15,7 +16,7 @@
         </div>
         <div class="container results">
             <% if (search_text !='' ) { %>
-                <h2>❝<%= search_text %>❞</h2>
+                <h2>❝ <%= search_text %> ❞</h2>
                 <p class="sm"><%= results.length%> registered alumni found</p>
                 <div class="flex-column">
                     <div class="table raised">
